@@ -1,0 +1,59 @@
+import { motion } from 'framer-motion';
+import { FiCalendar, FiGlobe } from 'react-icons/fi';
+import './PackageCard.css';
+
+interface PackageCardProps {
+  image: string;
+  title: string;
+  duration: string;
+  price?: string;
+  priceNote?: string;
+  included?: string[];
+}
+
+const PackageCard = ({ image, title, duration, price, priceNote, included }: PackageCardProps) => {
+  return (
+    <motion.div
+      className="pkg-card"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="pkg-card__image-wrapper">
+        <img src={image} alt={title} className="pkg-card__image" loading="lazy" />
+        <div className="pkg-card__duration">
+          <FiGlobe size={14} />
+          <span>{duration}</span>
+        </div>
+      </div>
+
+      <div className="pkg-card__info">
+        <h3 className="pkg-card__title">{title}</h3>
+
+        <div className="pkg-card__meta-row">
+          <FiCalendar size={13} />
+          <span>{priceNote || 'On Request'}</span>
+        </div>
+
+        {included && included.length > 0 && (
+          <div className="pkg-card__highlights">
+            {included.slice(0, 3).map((item, i) => (
+              <span key={i} className="pkg-card__highlight">
+                <span className="pkg-card__highlight-dot" />
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="pkg-card__footer">
+        <span className="pkg-card__price-text">
+          {price || 'Price on Demand'}
+        </span>
+        <button className="pkg-card__btn">Request Callback</button>
+      </div>
+    </motion.div>
+  );
+};
+
+export default PackageCard;
