@@ -1,21 +1,23 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './TopDestinations.css';
 
 interface Destination {
   name: string;
+  slug: string;
   image: string;
 }
 
 const destinations: Destination[] = [
-  { name: 'Bali', image: '/images/dest_bali_1774589152092.png' },
-  { name: 'Singapore', image: '/images/dest_singapore_1774589168899.png' },
-  { name: 'Japan', image: '/images/dest_japan_1774589186858.png' },
-  { name: 'Sri Lanka', image: '/images/dest_srilanka_1774589206836.png' },
-  { name: 'Thailand', image: '/images/dest_thailand_1774589225140.png' },
-  { name: 'Dubai', image: '/images/dest_dubai_1774589249274.png' },
-  { name: 'USA', image: '/images/dest_usa_1774589265816.png' },
-  { name: 'Vietnam', image: '/images/dest_vietnam_1774589284358.png' },
+  { name: 'Bali', slug: 'bali', image: '/images/dest_bali_1774589152092.png' },
+  { name: 'Singapore', slug: 'singapore', image: '/images/dest_singapore_1774589168899.png' },
+  { name: 'Japan', slug: 'japan', image: '/images/dest_japan_1774589186858.png' },
+  { name: 'Sri Lanka', slug: 'srilanka', image: '/images/dest_srilanka_1774589206836.png' },
+  { name: 'Thailand', slug: 'thailand', image: '/images/dest_thailand_1774589225140.png' },
+  { name: 'Dubai', slug: 'dubai', image: '/images/dest_dubai_1774589249274.png' },
+  { name: 'USA', slug: 'usa', image: '/images/dest_usa_1774589265816.png' },
+  { name: 'Vietnam', slug: 'vietnam', image: '/images/dest_vietnam_1774589284358.png' },
 ];
 
 const TopDestinations = () => {
@@ -71,15 +73,17 @@ const TopDestinations = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="destinations__image-wrapper">
-                  <img
-                    src={dest.image}
-                    alt={dest.name}
-                    className="destinations__image"
-                    loading="lazy"
-                  />
-                </div>
-                <span className="destinations__name">{dest.name}</span>
+                <Link to={`/destination/${dest.slug}`} className="destinations__link">
+                  <div className="destinations__image-wrapper">
+                    <img
+                      src={dest.image}
+                      alt={dest.name}
+                      className="destinations__image"
+                      loading="lazy"
+                    />
+                  </div>
+                  <span className="destinations__name">{dest.name}</span>
+                </Link>
               </motion.div>
             ))}
           </div>

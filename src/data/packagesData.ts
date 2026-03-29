@@ -1,6 +1,7 @@
 export interface Package {
   id: string;
   title: string;
+  destination: string;
   duration: string;
   price: string;
   priceNote?: string;
@@ -29,12 +30,97 @@ export interface VisaCountry {
   image: string;
 }
 
+export interface DestinationInfo {
+  slug: string;
+  name: string;
+  heroImage: string;
+  tagline: string;
+  description: string;
+}
+
+// ─────────────────────────────────────────────
+// DESTINATIONS METADATA
+// ─────────────────────────────────────────────
+export const destinationsData: DestinationInfo[] = [
+  {
+    slug: 'bali',
+    name: 'Bali',
+    heroImage: '/images/dest_bali_1774589152092.png',
+    tagline: 'Island of the Gods',
+    description: 'Bali is a tropical paradise known for its stunning beaches, ancient temples, terraced rice paddies, and vibrant culture. From the mystical Uluwatu Temple perched on dramatic cliffs to the lush rice terraces of Ubud, Bali offers a perfect blend of adventure, relaxation, and spiritual discovery. Experience world-class surfing, rejuvenating spa treatments, and unforgettable sunsets over the Indian Ocean.',
+  },
+  {
+    slug: 'singapore',
+    name: 'Singapore',
+    heroImage: '/images/dest_singapore_1774589168899.png',
+    tagline: 'The Lion City',
+    description: 'Singapore is a dazzling city-state that seamlessly blends futuristic architecture with rich cultural heritage. Explore the iconic Marina Bay Sands, wander through the enchanting Gardens by the Bay, and thrill at Universal Studios. From hawker centres serving legendary street food to luxury shopping on Orchard Road, Singapore delivers an unforgettable urban escape.',
+  },
+  {
+    slug: 'japan',
+    name: 'Japan',
+    heroImage: '/images/dest_japan_1774589186858.png',
+    tagline: 'Land of the Rising Sun',
+    description: 'Japan is a mesmerizing blend of ancient tradition and cutting-edge modernity. Walk through the serene bamboo groves of Kyoto, marvel at the neon-lit streets of Tokyo, and experience the tranquility of centuries-old temples. From cherry blossom seasons to snow-capped Mt. Fuji, Japan promises a journey that touches every sense.',
+  },
+  {
+    slug: 'srilanka',
+    name: 'Sri Lanka',
+    heroImage: '/images/dest_srilanka_1774589206836.png',
+    tagline: 'Pearl of the Indian Ocean',
+    description: 'Sri Lanka is a treasure trove of golden beaches, misty hill stations, ancient ruins, and lush tea plantations. Explore the cultural triangle of Kandy, Sigiriya, and Anuradhapura, go on a wildlife safari in Yala National Park, or simply unwind on the pristine southern coast. This island nation offers incredible value and unforgettable experiences.',
+  },
+  {
+    slug: 'thailand',
+    name: 'Thailand',
+    heroImage: '/images/dest_thailand_1774589225140.png',
+    tagline: 'Land of Smiles',
+    description: 'Thailand captivates with its stunning islands, ornate temples, world-renowned cuisine, and legendary hospitality. From the bustling streets of Bangkok to the crystal-clear waters of Phuket and Krabi, Thailand offers the perfect mix of adventure, culture, and relaxation for every type of traveler.',
+  },
+  {
+    slug: 'dubai',
+    name: 'Dubai',
+    heroImage: '/images/dest_dubai_1774589249274.png',
+    tagline: 'City of Gold',
+    description: 'Dubai is a city of superlatives — home to the tallest building, the largest mall, and some of the most luxurious experiences on Earth. From desert safaris under starlit skies to skiing in an indoor snow park, Dubai blends Arabian heritage with futuristic ambition. Experience world-class dining, shopping, and attractions.',
+  },
+  {
+    slug: 'usa',
+    name: 'USA',
+    heroImage: '/images/dest_usa_1774589265816.png',
+    tagline: 'Land of Dreams',
+    description: 'The United States offers extraordinary diversity — from the iconic skyline of New York City to the sun-kissed beaches of California, the Grand Canyon\'s majesty to the magic of Walt Disney World. Every state tells a different story with unique landscapes, cultures, and experiences waiting to be discovered.',
+  },
+  {
+    slug: 'vietnam',
+    name: 'Vietnam',
+    heroImage: '/images/dest_vietnam_1774589284358.png',
+    tagline: 'Hidden Gem of Southeast Asia',
+    description: 'Vietnam enchants with its breathtaking landscapes, from the limestone karsts of Ha Long Bay to the emerald rice terraces of Sapa. Explore ancient towns like Hoi An, cruise through the Mekong Delta, and savor one of the world\'s most vibrant street food cultures. Vietnam offers incredible beauty and value.',
+  },
+  {
+    slug: 'maldives',
+    name: 'Maldives',
+    heroImage: '/images/pkg_maldives.png',
+    tagline: 'Paradise on Earth',
+    description: 'The Maldives is the ultimate tropical escape — crystal-clear turquoise waters, overwater villas, pristine white-sand beaches, and some of the world\'s best diving and snorkeling spots. Perfect for honeymoons, luxury getaways, and anyone seeking pure paradise.',
+  },
+  {
+    slug: 'newzealand',
+    name: 'New Zealand',
+    heroImage: '/images/pkg_newzealand.png',
+    tagline: 'Adventure Awaits',
+    description: 'New Zealand is an adventurer\'s dream — from the dramatic fjords of Milford Sound to the geothermal wonders of Rotorua, the rolling green hills of Hobbiton to the adrenaline capital Queenstown. Experience a land of breathtaking natural beauty, Maori culture, and endless outdoor adventures.',
+  },
+];
+
 // ─────────────────────────────────────────────
 // INTERNATIONAL HOLIDAYS
 // ─────────────────────────────────────────────
 export const internationalPackages: Package[] = [
   {
     id: 'phuket-krabi',
+    destination: 'thailand',
     title: 'LOADED PHUKET + KRABI',
     duration: '5N/6D',
     price: '₹64,999/-',
@@ -53,6 +139,7 @@ export const internationalPackages: Package[] = [
   },
   {
     id: 'bangkok-pattaya',
+    destination: 'thailand',
     title: 'FUN WITH BANGKOK + PATTAYA',
     duration: '4N/5D',
     price: '₹39,999/-',
@@ -70,6 +157,7 @@ export const internationalPackages: Package[] = [
   },
   {
     id: 'maldives',
+    destination: 'maldives',
     title: 'AMAZING MALDIVES',
     duration: '4N/5D',
     price: '₹75,000/-',
@@ -87,6 +175,7 @@ export const internationalPackages: Package[] = [
   },
   {
     id: 'bali',
+    destination: 'bali',
     title: 'EXOTIC BALI',
     duration: '6N/7D',
     price: '₹29,990/-',
@@ -106,6 +195,7 @@ export const internationalPackages: Package[] = [
   },
   {
     id: 'srilanka',
+    destination: 'srilanka',
     title: 'MEMORABLE SRI LANKA',
     duration: '6N/7D',
     price: '₹32,499/-',
@@ -124,6 +214,7 @@ export const internationalPackages: Package[] = [
   },
   {
     id: 'singapore',
+    destination: 'singapore',
     title: 'SHORT BREAK SINGAPORE',
     duration: '4N/5D',
     price: '₹82,500/-',
@@ -141,6 +232,7 @@ export const internationalPackages: Package[] = [
   },
   {
     id: 'singapore-cruise',
+    destination: 'singapore',
     title: 'HONEYMOON SINGAPORE + CRUISE',
     duration: '6N/7D',
     price: '₹1,25,000/-',
@@ -160,6 +252,7 @@ export const internationalPackages: Package[] = [
   },
   {
     id: 'newzealand',
+    destination: 'newzealand',
     title: 'DISCOVER NEW ZEALAND',
     duration: 'Northern Splendour – Self Driven',
     price: '₹1,10,000/-',

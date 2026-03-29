@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer__brand">
             <div className="footer__logo">
-              <span className="footer__logo-icon">✈</span>
+              <img src="/images/logo.png" alt="Sai Mehar Trips" className="footer__logo-img" />
               <span className="footer__logo-text">Sai Mehar Trips</span>
             </div>
             <p className="footer__desc">
@@ -54,8 +54,8 @@ const Footer = () => {
           {/* Services */}
           <div className="footer__links-col">
             <h4 className="footer__col-title">Services</h4>
-            <a href="#visa" className="footer__link">Visa Services</a>
-            <a href="#passport" className="footer__link">Passport</a>
+            <Link to="/visa" className="footer__link">Visa Services</Link>
+            <Link to="/passport" className="footer__link">Passport Services</Link>
             <a href="#airfare" className="footer__link">Airfare</a>
             <a href="#honeymoon" className="footer__link">Honeymoon Packages</a>
           </div>

@@ -6,6 +6,8 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import BlogsPage from './pages/BlogsPage';
 import PackageDetailPage from './pages/PackageDetailPage';
+import DestinationPage from './pages/DestinationPage';
+import VisaPage from './pages/VisaPage';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/package/:id" element={<PackageDetailPage />} />
+        <Route path="/destination/:slug" element={<DestinationPage />} />
+        <Route path="/visa" element={<VisaPage />} />
       </Routes>
       <Footer />
     </Router>
@@ -26,3 +30,4 @@ function App() {
 }
 
 export default App;
+

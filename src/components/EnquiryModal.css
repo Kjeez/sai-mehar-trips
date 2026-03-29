@@ -1,0 +1,363 @@
+/* =============================================
+   ENQUIRY MODAL — Site Theme (Dark Navy + Red)
+   ============================================= */
+
+/* Backdrop */
+.eq-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 12, 26, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Modal card */
+.eq-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #0f1b2d;
+  border-radius: 24px;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button */
+.eq-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.eq-close:hover {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+/* ─── Header ─── */
+.eq-header {
+  padding: 32px 32px 0;
+  background: linear-gradient(160deg, #0f1b2d 0%, #142338 100%);
+}
+
+.eq-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.eq-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 24px;
+}
+
+/* Progress bar */
+.eq-progress {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.eq-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b, #ff9a6b);
+  border-radius: 4px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Step labels */
+.eq-steps {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 20px;
+}
+
+.eq-step {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.3s ease;
+}
+
+.eq-step--active {
+  color: #ff6b6b;
+}
+
+/* ─── Body ─── */
+.eq-body {
+  padding: 24px 32px 8px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.eq-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Field wrapper */
+.eq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.eq-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.2px;
+}
+
+.eq-label span {
+  color: #ff6b6b;
+  margin-left: 2px;
+}
+
+.eq-optional {
+  color: rgba(255, 255, 255, 0.3) !important;
+  font-weight: 400;
+}
+
+/* Input wrapper (for icon positioning) */
+.eq-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.eq-input-icon {
+  position: absolute;
+  left: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.eq-prefix {
+  position: absolute;
+  left: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.eq-input-icon--after-prefix {
+  left: 52px;
+}
+
+/* Input */
+.eq-input {
+  width: 100%;
+  padding: 13px 16px 13px 42px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.eq-input::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.eq-input:focus {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 107, 107, 0.45);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.eq-input--with-prefix {
+  padding-left: 82px;
+}
+
+/* Select */
+.eq-select {
+  padding-left: 16px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,0.3)' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.eq-select option {
+  background: #0f1b2d;
+  color: #ffffff;
+}
+
+/* Date input */
+.eq-input[type="date"] {
+  padding-left: 42px;
+  color-scheme: dark;
+}
+
+/* Textarea */
+.eq-textarea {
+  width: 100%;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.eq-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.eq-textarea:focus {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 107, 107, 0.45);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+/* Error state */
+.eq-field--error .eq-input,
+.eq-field--error .eq-select {
+  border-color: rgba(255, 80, 80, 0.5);
+  background: rgba(255, 80, 80, 0.05);
+}
+
+.eq-error {
+  font-size: 0.78rem;
+  color: #ff7070;
+  font-weight: 500;
+}
+
+/* ─── Footer ─── */
+.eq-footer {
+  padding: 20px 32px 28px;
+  display: flex;
+  gap: 12px;
+}
+
+.eq-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: all 0.22s ease;
+}
+
+/* Next / primary button */
+.eq-btn--primary {
+  background: linear-gradient(135deg, #ff6b6b, #ff9a6b);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+}
+
+.eq-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255, 107, 107, 0.45);
+}
+
+/* WhatsApp button */
+.eq-btn--whatsapp {
+  background: rgba(37, 211, 102, 0.12);
+  color: #25d366;
+  border: 1.5px solid rgba(37, 211, 102, 0.25);
+}
+
+.eq-btn--whatsapp:hover {
+  background: rgba(37, 211, 102, 0.2);
+  border-color: rgba(37, 211, 102, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.15);
+}
+
+.eq-btn--whatsapp-full {
+  flex: 2;
+  background: rgba(37, 211, 102, 0.15);
+}
+
+/* Back button */
+.eq-btn--back {
+  flex: 0.6;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.eq-btn--back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 520px) {
+  .eq-modal {
+    border-radius: 20px 20px 0 0;
+    max-height: 95vh;
+    align-self: flex-end;
+  }
+
+  .eq-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .eq-header {
+    padding: 24px 20px 0;
+  }
+
+  .eq-body {
+    padding: 20px 20px 8px;
+  }
+
+  .eq-footer {
+    padding: 16px 20px 24px;
+  }
+
+  .eq-title {
+    font-size: 1.3rem;
+  }
+}

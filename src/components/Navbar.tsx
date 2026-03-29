@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="navbar__container">
           <div className="navbar__left">
             <Link to="/" className="navbar__logo">
-              <span className="navbar__logo-icon">✈</span>
+              <img src="/images/logo.png" alt="Sai Mehar Trips" className="navbar__logo-img" />
               <span className="navbar__logo-text">Sai Mehar Trips</span>
             </Link>
             <div className="navbar__contact-info">
@@ -172,6 +172,8 @@ const Navbar = () => {
 
               {/* Links */}
               <Link to="/blogs" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Blogs</Link>
+              <Link to="/visa" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Visa Services</Link>
+              <Link to="/passport" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Passport Services</Link>
               <Link to="/about" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>About Us</Link>
               <Link to="/contact" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
               <a href="#privacy" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Privacy Policy</a>

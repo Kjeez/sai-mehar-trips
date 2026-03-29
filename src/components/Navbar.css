@@ -21,8 +21,7 @@
   border-bottom: 1px solid #eee;
 }
 
-.navbar--menu-open .navbar__logo-text,
-.navbar--menu-open .navbar__logo-icon {
+.navbar--menu-open .navbar__logo-text {
   color: var(--primary-dark) !important;
   -webkit-text-fill-color: var(--primary-dark) !important;
 }
@@ -66,8 +65,10 @@
   text-decoration: none;
 }
 
-.navbar__logo-icon {
-  font-size: 1.8rem;
+.navbar__logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
@@ -88,11 +89,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 0.85rem;
-  font-weight: 400;
+  font-weight: 500;
   transition: color var(--transition-fast);
   text-decoration: none;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .navbar__contact-item:hover {
@@ -137,9 +139,11 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--text-white);
+  color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
   font-size: 0.85rem;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .navbar__phone-topbar:hover {
@@ -396,8 +400,8 @@
     font-size: 1.2rem;
   }
 
-  .navbar__logo-icon {
-    font-size: 1.4rem;
+  .navbar__logo-img {
+    height: 28px;
   }
 
   .fullmenu {

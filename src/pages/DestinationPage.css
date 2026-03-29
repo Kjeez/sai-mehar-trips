@@ -1,0 +1,348 @@
+/* ══════════════════════════════════════════════
+   DESTINATION PAGE
+   ══════════════════════════════════════════════ */
+
+/* ── Not Found ── */
+.destpage__notfound {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.destpage__notfound h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.destpage__back-link {
+  color: #e74c3c;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.destpage__back-link:hover {
+  color: #c0392b;
+}
+
+/* ── Hero Banner ── */
+.destpage__hero {
+  position: relative;
+  height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.destpage__hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  transition: transform 8s ease-out;
+}
+
+.destpage:hover .destpage__hero-bg {
+  transform: scale(1);
+}
+
+.destpage__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 26, 46, 0.25) 0%,
+    rgba(26, 26, 46, 0.5) 40%,
+    rgba(26, 26, 46, 0.85) 100%
+  );
+}
+
+.destpage__hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+.destpage__hero-tagline {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.destpage__hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 1.5rem;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.destpage__hero-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
+  transition: box-shadow 0.3s;
+}
+
+.destpage__hero-cta:hover {
+  box-shadow: 0 6px 30px rgba(231, 76, 60, 0.55);
+}
+
+/* Stats */
+.destpage__stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.2rem 2rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  width: fit-content;
+}
+
+.destpage__stat {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+}
+
+.destpage__stat svg {
+  color: #ff6b6b;
+  flex-shrink: 0;
+}
+
+.destpage__stat div {
+  display: flex;
+  flex-direction: column;
+}
+
+.destpage__stat-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.destpage__stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.destpage__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── About Section ── */
+.destpage__about {
+  padding: 4rem 2rem 2rem;
+  background: #fff;
+}
+
+.destpage__about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.destpage__section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.destpage__section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #e74c3c, #ff6b6b);
+  border-radius: 3px;
+}
+
+.destpage__about-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  max-height: 5.4em;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.destpage__about-text--expanded {
+  max-height: 500px;
+}
+
+.destpage__readmore {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+.destpage__readmore:hover {
+  color: #c0392b;
+}
+
+/* ── Packages Grid ── */
+.destpage__packages {
+  padding: 3rem 2rem 4rem;
+  background: #f8f9fc;
+}
+
+.destpage__packages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.destpage__packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+/* ── No Packages ── */
+.destpage__no-packages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #888;
+}
+
+.destpage__no-packages h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.destpage__no-packages p {
+  max-width: 400px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.destpage__contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 20px rgba(231, 76, 60, 0.3);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.destpage__contact-btn:hover {
+  box-shadow: 0 6px 30px rgba(231, 76, 60, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .destpage__packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .destpage__hero {
+    height: 440px;
+  }
+
+  .destpage__hero-title {
+    font-size: 2rem;
+  }
+
+  .destpage__stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .destpage__stat-divider {
+    display: none;
+  }
+
+  .destpage__packages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destpage__section-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .destpage__hero {
+    height: 380px;
+  }
+
+  .destpage__hero-title {
+    font-size: 1.6rem;
+  }
+
+  .destpage__hero-tagline {
+    font-size: 0.8rem;
+  }
+
+  .destpage__hero-content {
+    padding: 0 1.25rem 2rem;
+  }
+
+  .destpage__about {
+    padding: 3rem 1.25rem 1.5rem;
+  }
+
+  .destpage__packages {
+    padding: 2rem 1.25rem 3rem;
+  }
+}
