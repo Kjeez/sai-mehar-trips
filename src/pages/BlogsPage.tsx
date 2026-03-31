@@ -36,7 +36,7 @@ const allPosts = [
   },
   {
     id: 5,
-    title: 'Why Book Your Next Trip with Sai Mehar Trips?',
+    title: 'Why Book Your Next Trip with Sai Mehar Trips Pvt Ltd?',
     excerpt: 'The secrets behind hassle-free travel. Learn what sets us apart from other travel agencies and why thousands choose us.',
     image: '/images/hero_dubai_1774589057519.png',
     date: 'February 20, 2026',

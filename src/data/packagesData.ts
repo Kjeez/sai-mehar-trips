@@ -21,8 +21,14 @@ export interface DomesticPackage {
 export interface PilgrimagePackage {
   id: string;
   title: string;
+  destination?: string;
   duration: string;
+  price: string;
+  priceNote?: string;
   image: string;
+  included: string[];
+  itinerary?: { day: string; description: string }[];
+  note?: string;
 }
 
 export interface VisaCountry {
@@ -283,13 +289,88 @@ export const domesticPackages: DomesticPackage[] = [
 // PILGRIMAGE TOURS
 // ─────────────────────────────────────────────
 export const pilgrimagePackages: PilgrimagePackage[] = [
-  { id: 'baidyanath', title: 'BABA BAIDYANATH DARSHAN', duration: '1N/2D', image: '/images/pkg_temple.png' },
-  { id: 'somnath', title: 'SOMNATH + DWARKADHISH', duration: '3N/4D', image: '/images/pkg_temple.png' },
-  { id: 'ayodhya', title: 'AYODHYA + PRAYAGRAJ + KASHI VISHWANATH', duration: '3N/4D', image: '/images/pkg_temple.png' },
-  { id: 'rameshwaram', title: 'MADURAI + RAMESHWARAM + KANYAKUMARI', duration: '3N/4D', image: '/images/pkg_temple.png' },
-  { id: 'shirdi', title: 'SHIRDI + SHIGNAPUR + 3 JYOTIRLINGA DARSHAN', duration: '3N/4D', image: '/images/pkg_temple.png' },
-  { id: 'mallikarjuna', title: 'MALLIKARJUNA JYOTIRLINGA', duration: '2N/3D', image: '/images/pkg_temple.png' },
-  { id: 'mahakaleshwar', title: 'MAHAKALESHWAR + OMKARESHWAR', duration: '2N/3D', image: '/images/pkg_temple.png' },
+  {
+    id: 'baidyanath',
+    title: 'BABA BAIDYANATH DARSHAN',
+    duration: '1N/2D',
+    price: '₹17,999/-',
+    priceNote: 'Per Person Ex Delhi',
+    image: '/images/pkg_temple.png',
+    included: ['Airfare on Direct Flight', '1N Stay', 'Breakfast'],
+    itinerary: [
+      { day: 'Day 1', description: 'Arrival at Deoghar airport and transfer to hotel. Located near Baba Baidyanath Jyotirlinga — proceed for Darshan. Overnight stay at Hotel.' },
+      { day: 'Day 2', description: 'After breakfast, visit Basukinath Temple and Trikut Parvat. Later, drop to airport and fly back home.' },
+    ],
+    note: 'We wish you all the best on your journey.',
+  },
+  {
+    id: 'somnath-dwarkadhish',
+    title: 'SOMNATH + DWARKADHISH',
+    duration: '3N/4D',
+    price: '₹31,999/-',
+    priceNote: 'Per Person Ex Delhi',
+    image: '/images/pkg_temple.png',
+    included: ['Accommodation', 'Daily Breakfast', 'Sightseeing as per itinerary', 'All Transfers'],
+    itinerary: [
+      { day: 'Day 1 — Rajkot – Jamnagar – Dwarka', description: 'Arrive at Rajkot, meet and greet. Drive to Jamnagar to visit Bala Hanuman Temple — world famous for the continuous chanting of "Jai Ram, Shri Ram" since 1964, recorded in the Guinness Book of World Records. Continue drive to Dwarka, transfer to hotel. Attend evening Aarti Darshan at Dwarkadhish Temple. Overnight stay at Dwarka.' },
+      { day: 'Day 2 — Dwarka', description: 'Attend Morning Aarti Darshan at Dwarkadhish Temple. Later visit Bet Dwarka (where Lord Krishna lived with his family), Nageshwar Jyotirlinga (one of the 12 sacred Jyotirlingas) & Rukmani Temple (Temple of Lord Krishna\'s wife). Attend evening Aarti Darshan at Dwarkadhish Temple. Overnight stay at Dwarka.' },
+      { day: 'Day 3 — Dwarka – Porbandar – Somnath', description: 'Morning after breakfast, proceed to Porbandar. Visit Kirti Temple, Sudama Temple & birthplace of Mahatma Gandhi. Also visit Gandhi Museum and study room. Later drive to Somnath and visit Somnath Temple — a Lord Shiva temple known as Jyotirlinga built by Moon God. Visit Bhalka Tirtha & Triveni Ghat. Attend evening Aarti and enjoy the Light & Sound Show. Overnight stay at Somnath.' },
+      { day: 'Day 4 — Somnath – Rajkot Departure', description: 'Morning after breakfast, drive to Rajkot airport and fly back home.' },
+    ],
+    note: 'We wish you all the best on your journey.',
+  },
+  {
+    id: 'ayodhya-kashi',
+    title: 'AYODHYA + PRAYAGRAJ + KASHI VISHWANATH',
+    duration: '3N/4D',
+    price: '₹27,999/-',
+    priceNote: 'Per Person Ex Delhi',
+    image: '/images/pkg_temple.png',
+    included: ['Accommodation', 'Daily Breakfast', 'Sightseeing as per itinerary', 'All Transfers'],
+    itinerary: [
+      { day: 'Day 1 — Arrival in Varanasi (Kashi)', description: 'Arrive at Varanasi (VNS) airport or railway station. Check in to hotel and proceed for Darshan of Kashi Vishwanath Jyotirlinga. Later visit Manikarnika Ghat for the mesmerizing evening Ganga Aarti. Overnight stay at Hotel.' },
+      { day: 'Day 2 — Drive to Prayagraj', description: 'After breakfast, check out and transfer to Prayagraj. Check in to hotel. Visit the holy Triveni Sangam (confluence of Ganga, Yamuna, and mythical Saraswati rivers), Bade Hanuman Temple, Anand Bhawan (Nehru family residence turned museum), and Khusro Bagh. Overnight stay at Prayagraj.' },
+      { day: 'Day 3 — Transfer to Ayodhya', description: 'After breakfast, check out and transfer to Ayodhya. Arrival and check in to hotel. Visit the grand Ram Mandir and attend the serene evening Saryu Aarti at Naya Ghat or Ram Ki Paidi. Overnight stay at Ayodhya.' },
+      { day: 'Day 4 — Departure', description: 'After breakfast, check out and drop to airport. Fly back home.' },
+    ],
+    note: 'We wish you all the best on your journey.',
+  },
+  {
+    id: 'rameshwaram',
+    title: 'MADURAI + RAMESHWARAM + KANYAKUMARI',
+    duration: '3N/4D',
+    price: 'On Request',
+    image: '/images/pkg_temple.png',
+    included: ['Accommodation', 'Daily Breakfast', 'Sightseeing as per itinerary'],
+    note: 'Contact us for detailed itinerary and pricing.',
+  },
+  {
+    id: 'shirdi',
+    title: 'SHIRDI + SHIGNAPUR + 3 JYOTIRLINGA DARSHAN',
+    duration: '3N/4D',
+    price: 'On Request',
+    image: '/images/pkg_temple.png',
+    included: ['Accommodation', 'Daily Breakfast', 'Sightseeing as per itinerary'],
+    note: 'Contact us for detailed itinerary and pricing.',
+  },
+  {
+    id: 'mallikarjuna',
+    title: 'MALLIKARJUNA JYOTIRLINGA',
+    duration: '2N/3D',
+    price: 'On Request',
+    image: '/images/pkg_temple.png',
+    included: ['Accommodation', 'Daily Breakfast', 'Sightseeing as per itinerary'],
+    note: 'Contact us for detailed itinerary and pricing.',
+  },
+  {
+    id: 'mahakaleshwar',
+    title: 'MAHAKALESHWAR + OMKARESHWAR',
+    duration: '2N/3D',
+    price: 'On Request',
+    image: '/images/pkg_temple.png',
+    included: ['Accommodation', 'Daily Breakfast', 'Sightseeing as per itinerary'],
+    note: 'Contact us for detailed itinerary and pricing.',
+  },
 ];
 
 // ─────────────────────────────────────────────

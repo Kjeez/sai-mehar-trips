@@ -38,7 +38,7 @@ const AboutPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2>We Are <span className="about-page__brand">Sai Mehar Trips</span></h2>
+            <h2>We Are <span className="about-page__brand">Sai Mehar Trips Pvt Ltd</span></h2>
             <p>
               We're a passionate team of travel enthusiasts dedicated to crafting
               unforgettable journeys. From international festivals to luxury escapes,
@@ -105,7 +105,7 @@ const AboutPage = () => {
               </p>
               <p>
                 We work tirelessly to curate the best deals, partnerships,
-                and experiences so that every journey with Sai Mehar Trips
+                and experiences so that every journey with Sai Mehar Trips Pvt Ltd
                 exceeds expectations.
               </p>
             </motion.div>
@@ -122,7 +122,7 @@ const AboutPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Why Sai Mehar Trips?
+            Why Sai Mehar Trips Pvt Ltd?
           </motion.h3>
           <div className="about-page__why-grid">
             {[

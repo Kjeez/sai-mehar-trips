@@ -46,12 +46,16 @@ const HomePage = () => {
 
       <PackageSection title="Pilgrimage Tours" accentColor="#e67e22">
         {pilgrimagePackages.map((pkg) => (
-          <PackageCard
-            key={pkg.id}
-            image={pkg.image}
-            title={pkg.title}
-            duration={pkg.duration}
-          />
+          <Link key={pkg.id} to={`/package/${pkg.id}`} style={{ textDecoration: 'none' }}>
+            <PackageCard
+              image={pkg.image}
+              title={pkg.title}
+              duration={pkg.duration}
+              price={pkg.price}
+              priceNote={pkg.priceNote}
+              included={pkg.included}
+            />
+          </Link>
         ))}
       </PackageSection>
 

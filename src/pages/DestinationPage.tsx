@@ -118,7 +118,7 @@ const DestinationPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Explore the best {destination.name} tour packages with Sai Mehar Trips.
+            Explore the best {destination.name} tour packages with Sai Mehar Trips Pvt Ltd.
             We offer carefully curated {destination.name.toLowerCase()} holiday packages
             that include comfortable stays, delicious meals, city tours, and much more.
             {' '}{destination.description}

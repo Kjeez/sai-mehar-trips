@@ -78,7 +78,7 @@ const EnquiryModal = ({ isOpen, onClose, prefilledCountry = '', prefilledService
 
   const buildWhatsAppMessage = () => {
     const lines = [
-      `👋 *New Enquiry — Sai Mehar Trips*`,
+      `👋 *New Enquiry — Sai Mehar Trips Pvt Ltd*`,
       ``,
       `👤 *Name:* ${form.name}`,
       `📞 *Phone:* +91 ${form.phone}`,

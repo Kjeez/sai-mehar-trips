@@ -4,11 +4,11 @@ import { useState } from 'react';
 import './ContactPage.css';
 
 const faqs = [
-  { q: 'What type of trips does Sai Mehar Trips offer?', a: 'We offer international holidays, domestic packages, pilgrimage tours, honeymoon packages, custom trips, and more across 50+ destinations worldwide.' },
-  { q: 'Is Sai Mehar Trips a trusted travel company?', a: 'Yes! We are a trusted travel brand with hundreds of happy travelers. We prioritize transparency, safety, and unforgettable experiences.' },
+  { q: 'What type of trips does Sai Mehar Trips Pvt Ltd offer?', a: 'We offer international holidays, domestic packages, pilgrimage tours, honeymoon packages, custom trips, and more across 50+ destinations worldwide.' },
+  { q: 'Is Sai Mehar Trips Pvt Ltd a trusted travel company?', a: 'Yes! We are a trusted travel brand with hundreds of happy travelers. We prioritize transparency, safety, and unforgettable experiences.' },
   { q: 'Do you provide customized travel packages?', a: 'Absolutely! We specialize in customized itineraries tailored to your preferences, budget, and travel dates. Just tell us your dream destination.' },
   { q: 'Do you offer international holiday packages?', a: 'Yes, we offer packages to Singapore, Bali, Thailand, Maldives, Sri Lanka, Dubai, New Zealand, Europe, and many more destinations.' },
-  { q: 'Can I book luxury holidays with Sai Mehar Trips?', a: 'Yes, we offer premium and luxury packages including 5-star stays, private tours, cruise holidays, and exclusive experiences.' },
+  { q: 'Can I book luxury holidays with Sai Mehar Trips Pvt Ltd?', a: 'Yes, we offer premium and luxury packages including 5-star stays, private tours, cruise holidays, and exclusive experiences.' },
   { q: 'How can I book a trip?', a: 'You can contact us via phone at +91 9876543210, email us at bookings@saimahartrips.in, or fill out the contact form on this page.' },
   { q: 'Do you provide support during the trip?', a: 'Yes, we offer 24/7 support during your trip. Our team is always available to assist you with any queries or changes needed.' },
 ];
@@ -48,7 +48,7 @@ const ContactPage = () => {
             >
               <h2>Contact Us :</h2>
               <p className="contact-page__info-desc">
-                Get in touch with our travel experts and let us design a seamless, personalized experience just for you. Sai Mehar Trips helps you create memories for life.
+                Get in touch with our travel experts and let us design a seamless, personalized experience just for you. Sai Mehar Trips Pvt Ltd helps you create memories for life.
               </p>
             </motion.div>
 

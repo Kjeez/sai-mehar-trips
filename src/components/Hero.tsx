@@ -98,7 +98,7 @@ const Hero = () => {
 
           <p className="hero__subtitle">
             India's #1 travel brand for global festivals, luxury escapes, and
-            unforgettable experiences — all with Sai Mehar Trips.
+            unforgettable experiences — all with Sai Mehar Trips Pvt Ltd.
           </p>
 
           <motion.button

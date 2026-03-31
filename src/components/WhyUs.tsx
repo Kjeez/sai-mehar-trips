@@ -36,7 +36,7 @@ const WhyUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="why-us__title">Why Sai Mehar Trips?</h2>
+          <h2 className="why-us__title">Why Sai Mehar Trips Pvt Ltd?</h2>
           <p className="why-us__subtitle">
             Because travel shouldn't be complicated. It should be exciting, immersive, and totally stress-free.
           </p>

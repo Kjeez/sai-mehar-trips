@@ -51,7 +51,7 @@ const Navbar = () => {
           <div className="navbar__left">
             <Link to="/" className="navbar__logo">
               <img src="/images/logo.png" alt="Sai Mehar Trips" className="navbar__logo-img" />
-              <span className="navbar__logo-text">Sai Mehar Trips</span>
+              <span className="navbar__logo-text">Sai Mehar Trips Pvt Ltd</span>
             </Link>
             <div className="navbar__contact-info">
               <a href="tel:+919876543210" className="navbar__contact-item">
