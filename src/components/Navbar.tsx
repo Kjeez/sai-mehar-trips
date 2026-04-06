@@ -66,11 +66,7 @@ const Navbar = () => {
           </div>
 
           <div className="navbar__right">
-            <a href="tel:+919876543210" className="navbar__phone-topbar">
-              <FiPhone size={16} />
-              <span>(+91) 9876543210</span>
-            </a>
-            <span className="navbar__divider">|</span>
+
             <button className="navbar__icon-btn" aria-label="Search">
               <FiSearch size={20} />
             </button>
