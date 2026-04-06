@@ -7,6 +7,7 @@ interface Destination {
   name: string;
   slug: string;
   image: string;
+  price?: string;
 }
 
 const destinations: Destination[] = [
@@ -14,7 +15,7 @@ const destinations: Destination[] = [
   { name: 'Singapore', slug: 'singapore', image: '/images/dest_singapore_1774589168899.png' },
   { name: 'Japan', slug: 'japan', image: '/images/dest_japan_1774589186858.png' },
   { name: 'Sri Lanka', slug: 'srilanka', image: '/images/dest_srilanka_1774589206836.png' },
-  { name: 'Thailand', slug: 'thailand', image: '/images/dest_thailand_1774589225140.png' },
+  { name: 'Thailand', slug: 'thailand', image: '/images/dest_thailand_1774589225140.png', price: '₹2,10,000/-' },
   { name: 'Dubai', slug: 'dubai', image: '/images/dest_dubai_1774589249274.png' },
   { name: 'USA', slug: 'usa', image: '/images/dest_usa_1774589265816.png' },
   { name: 'Vietnam', slug: 'vietnam', image: '/images/dest_vietnam_1774589284358.png' },
@@ -83,6 +84,12 @@ const TopDestinations = () => {
                     />
                   </div>
                   <span className="destinations__name">{dest.name}</span>
+                  {dest.price && (
+                    <div className="destinations__price-wrap">
+                      <span className="destinations__price-label">Price Starts</span>
+                      <span className="destinations__price-value">{dest.price}</span>
+                    </div>
+                  )}
                 </Link>
               </motion.div>
             ))}
