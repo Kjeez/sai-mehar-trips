@@ -10,6 +10,7 @@ import {
   internationalPackages,
   domesticPackages,
   pilgrimagePackages,
+  cruisePackages,
 } from '../data/packagesData';
 
 const HomePage = () => {
@@ -56,6 +57,17 @@ const HomePage = () => {
               included={pkg.included}
             />
           </Link>
+        ))}
+      </PackageSection>
+
+      <PackageSection title="Cruises" accentColor="#3498db">
+        {cruisePackages.map((pkg) => (
+          <PackageCard
+            key={pkg.id}
+            image={pkg.image}
+            title={pkg.title}
+            duration={pkg.duration}
+          />
         ))}
       </PackageSection>
 

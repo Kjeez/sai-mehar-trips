@@ -418,3 +418,23 @@ export const menuCategories = [
 
 // Tagline
 export const tagline = "As many itineraries and options as you like and as many destinations as you like";
+
+// ─────────────────────────────────────────────
+// CRUISE PACKAGES
+// ─────────────────────────────────────────────
+export interface CruisePackage {
+  id: string;
+  title: string;
+  duration: string;
+  price?: string;
+  priceNote?: string;
+  image: string;
+}
+
+export const cruisePackages: CruisePackage[] = [
+  { id: 'royal-caribbean', title: 'Royal Caribbean International Cruises', duration: 'Varies', image: '/images/hero_singapore_1774589129848.png' },
+  { id: 'cordelia', title: 'Cordelia Cruises', duration: 'Varies', image: '/images/hero_dubai_1774589057519.png' },
+  { id: 'world-dream', title: 'World Dream Cruise', duration: 'Varies', image: '/images/dest_singapore_1774589168899.png' },
+  { id: 'star-cruises', title: 'Star Cruises', duration: 'Varies', image: '/images/dest_vietnam_1774589284358.png' },
+  { id: 'msc-cruises', title: 'MSC Cruises', duration: 'Varies', image: '/images/dest_usa_1774589265816.png' },
+];
