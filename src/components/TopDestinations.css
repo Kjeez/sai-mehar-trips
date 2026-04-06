@@ -1,20 +1,9 @@
 .destinations {
   padding: 0 0 80px;
-  background: transparent;
+  background: linear-gradient(180deg, transparent 100px, var(--bg-white) 220px);
   position: relative;
   z-index: 10;
   margin-top: -240px; /* Pull into hero section */
-}
-
-.destinations::before {
-  content: '';
-  position: absolute;
-  top: 150px; /* Start white background halfway through the images */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--bg-white);
-  z-index: -1;
 }
 
 .destinations__container {
@@ -169,11 +158,9 @@
   .destinations {
     padding: 0 0 60px;
     margin-top: -180px;
+    background: linear-gradient(180deg, transparent 70px, var(--bg-white) 160px);
   }
 
-  .destinations::before {
-    top: 110px;
-  }
 
   .destinations__container {
     padding: 0 20px;
