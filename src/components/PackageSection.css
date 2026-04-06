@@ -7,9 +7,9 @@
 }
 
 .pkg-section__container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .pkg-section__header {
@@ -17,6 +17,8 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 28px;
+  padding-left: max(40px, calc((100vw - 1400px) / 2 + 40px));
+  padding-right: max(40px, calc((100vw - 1400px) / 2 + 40px));
 }
 
 .pkg-section__title {
@@ -68,6 +70,8 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  padding-left: max(40px, calc((100vw - 1400px) / 2 + 40px));
+  padding-right: max(40px, calc((100vw - 1400px) / 2 + 40px));
 }
 
 .pkg-section__scroll::-webkit-scrollbar {
@@ -87,7 +91,17 @@
   }
 
   .pkg-section__container {
-    padding: 0 16px;
+    padding: 0;
+  }
+
+  .pkg-section__header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .pkg-section__scroll {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .pkg-section__title {

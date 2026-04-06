@@ -7,9 +7,9 @@
 }
 
 .destinations__container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .destinations__title {
@@ -17,6 +17,7 @@
   font-weight: 800;
   color: #ffffff; /* White text on dark hero overlay */
   margin-bottom: 40px;
+  margin-left: max(40px, calc((100vw - 1400px) / 2 + 40px));
   position: relative;
   display: inline-block;
 }
@@ -39,6 +40,8 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding-bottom: 10px;
+  padding-left: max(40px, calc((100vw - 1400px) / 2 + 40px));
+  padding-right: max(40px, calc((100vw - 1400px) / 2 + 40px));
 }
 
 .destinations__scroll-wrapper::-webkit-scrollbar {
@@ -163,12 +166,18 @@
 
 
   .destinations__container {
-    padding: 0 20px;
+    padding: 0;
   }
 
   .destinations__title {
     font-size: 1.6rem;
     margin-bottom: 28px;
+    margin-left: 20px;
+  }
+
+  .destinations__scroll-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .destinations__grid {
