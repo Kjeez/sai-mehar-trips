@@ -9,9 +9,10 @@ interface PackageCardProps {
   price?: string;
   priceNote?: string;
   included?: string[];
+  imageFit?: 'cover' | 'contain';
 }
 
-const PackageCard = ({ image, title, duration, price, priceNote, included }: PackageCardProps) => {
+const PackageCard = ({ image, title, duration, price, priceNote, included, imageFit = 'cover' }: PackageCardProps) => {
   return (
     <motion.div
       className="pkg-card"
@@ -19,7 +20,7 @@ const PackageCard = ({ image, title, duration, price, priceNote, included }: Pac
       transition={{ duration: 0.3 }}
     >
       <div className="pkg-card__image-wrapper">
-        <img src={image} alt={title} className="pkg-card__image" loading="lazy" />
+        <img src={image} alt={title} className="pkg-card__image" style={{ objectFit: imageFit }} loading="lazy" />
         <div className="pkg-card__duration">
           <FiGlobe size={14} />
           <span>{duration}</span>

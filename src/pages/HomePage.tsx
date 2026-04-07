@@ -67,6 +67,7 @@ const HomePage = () => {
             image={pkg.image}
             title={pkg.title}
             duration={pkg.duration}
+            imageFit="contain"
           />
         ))}
       </PackageSection>

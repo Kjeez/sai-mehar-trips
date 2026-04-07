@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useDragScroll } from '../hooks/useDragScroll';
 import './TopDestinations.css';
 
 interface Destination {
@@ -23,6 +24,7 @@ const destinations: Destination[] = [
 
 const TopDestinations = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  useDragScroll(scrollRef);
   const [activeDot, setActiveDot] = useState(0);
   const totalDots = 5;
 

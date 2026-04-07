@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useDragScroll } from '../hooks/useDragScroll';
 import './PackageSection.css';
 
 interface PackageSectionProps {
@@ -11,6 +12,7 @@ interface PackageSectionProps {
 
 const PackageSection = ({ title, children, accentColor }: PackageSectionProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  useDragScroll(scrollRef);
 
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return;
