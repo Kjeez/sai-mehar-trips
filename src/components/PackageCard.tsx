@@ -16,8 +16,11 @@ const PackageCard = ({ image, title, duration, price, priceNote, included, image
   return (
     <motion.div
       className="pkg-card"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
       whileHover={{ y: -6 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.4 }}
     >
       <div className="pkg-card__image-wrapper">
         <img src={image} alt={title} className="pkg-card__image" style={{ objectFit: imageFit }} loading="lazy" />

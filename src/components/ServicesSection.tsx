@@ -1,3 +1,4 @@
+import FadeIn from './FadeIn';
 import { motion } from 'framer-motion';
 import { FiGlobe, FiFileText, FiSend, FiMapPin } from 'react-icons/fi';
 import { visaCountries, visaCategories, passportServices, airfareServices } from '../data/packagesData';
@@ -20,12 +21,9 @@ const ServicesSection = () => {
 
         <div className="services__grid">
           {/* VISA */}
-          <motion.div
+          <FadeIn
             className="services__card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            direction="up"
           >
             <div className="services__card-icon services__card-icon--visa">
               <FiGlobe size={28} />
@@ -41,15 +39,13 @@ const ServicesSection = () => {
               <span className="services__tag services__tag--more">+{visaCountries.length - 12} more</span>
             </div>
             <button className="services__card-btn">Enquire Now →</button>
-          </motion.div>
+          </FadeIn>
 
           {/* PASSPORT */}
-          <motion.div
+          <FadeIn
             className="services__card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            direction="up"
+            delay={0.1}
           >
             <div className="services__card-icon services__card-icon--passport">
               <FiFileText size={28} />
@@ -66,15 +62,13 @@ const ServicesSection = () => {
             </div>
             <p className="services__note">{passportServices.note}</p>
             <button className="services__card-btn">Get Started →</button>
-          </motion.div>
+          </FadeIn>
 
           {/* AIRFARE */}
-          <motion.div
+          <FadeIn
             className="services__card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            direction="up"
+            delay={0.2}
           >
             <div className="services__card-icon services__card-icon--airfare">
               <FiSend size={28} />
@@ -91,7 +85,7 @@ const ServicesSection = () => {
               ))}
             </ul>
             <button className="services__card-btn">Book Now →</button>
-          </motion.div>
+          </FadeIn>
         </div>
       </div>
     </section>

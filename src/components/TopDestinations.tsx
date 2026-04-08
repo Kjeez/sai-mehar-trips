@@ -12,11 +12,11 @@ interface Destination {
 }
 
 const destinations: Destination[] = [
-  { name: 'Bali', slug: 'bali', image: '/images/dest_bali_1774589152092.png' },
-  { name: 'Singapore', slug: 'singapore', image: '/images/dest_singapore_1774589168899.png' },
+  { name: 'Bali', slug: 'bali', image: '/images/places/bali.jpg' },
+  { name: 'Singapore', slug: 'singapore', image: '/images/places/singapore.jpg' },
   { name: 'Japan', slug: 'japan', image: '/images/dest_japan_1774589186858.png' },
   { name: 'Sri Lanka', slug: 'srilanka', image: '/images/dest_srilanka_1774589206836.png' },
-  { name: 'Thailand', slug: 'thailand', image: '/images/dest_thailand_1774589225140.png', price: '₹2,10,000/-' },
+  { name: 'Thailand', slug: 'thailand', image: '/images/places/thailand.jpg', price: '₹2,10,000/-' },
   { name: 'Dubai', slug: 'dubai', image: '/images/dest_dubai_1774589249274.png' },
   { name: 'USA', slug: 'usa', image: '/images/dest_usa_1774589265816.png' },
   { name: 'Vietnam', slug: 'vietnam', image: '/images/dest_vietnam_1774589284358.png' },
@@ -35,6 +35,7 @@ const TopDestinations = () => {
     const handleScroll = () => {
       const scrollLeft = container.scrollLeft;
       const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 0) return;
       const dotIndex = Math.round((scrollLeft / maxScroll) * (totalDots - 1));
       setActiveDot(Math.min(dotIndex, totalDots - 1));
     };
@@ -42,6 +43,62 @@ const TopDestinations = () => {
     container.addEventListener('scroll', handleScroll, { passive: true });
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Auto-scroll logic
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let intervalId: ReturnType<typeof setInterval>;
+    
+    const startAutoScroll = () => {
+      intervalId = setInterval(() => {
+        const _container = scrollRef.current;
+        if (!_container) return;
+
+        const maxScroll = _container.scrollWidth - _container.clientWidth;
+        if (maxScroll <= 0) return;
+
+        const currentDotExact = (_container.scrollLeft / maxScroll) * (totalDots - 1);
+        let nextDot = Math.floor(currentDotExact) + 1;
+
+        if (nextDot >= totalDots || _container.scrollLeft >= maxScroll - 5) {
+          nextDot = 0;
+        }
+
+        const targetScroll = (nextDot / (totalDots - 1)) * maxScroll;
+        _container.scrollTo({ left: targetScroll, behavior: 'smooth' });
+      }, 3500);
+    };
+
+    startAutoScroll();
+
+    const pause = () => clearInterval(intervalId);
+    const resume = () => { clearInterval(intervalId); startAutoScroll(); };
+    
+    const isHoverSupported = window.matchMedia('(hover: hover)').matches;
+
+    if (isHoverSupported) {
+      container.addEventListener('mouseenter', pause);
+      container.addEventListener('mouseleave', resume);
+    } else {
+      container.addEventListener('touchstart', pause, { passive: true });
+      container.addEventListener('touchend', resume, { passive: true });
+      container.addEventListener('touchcancel', resume, { passive: true });
+    }
+
+    return () => {
+      clearInterval(intervalId);
+      if (isHoverSupported) {
+        container.removeEventListener('mouseenter', pause);
+        container.removeEventListener('mouseleave', resume);
+      } else {
+        container.removeEventListener('touchstart', pause);
+        container.removeEventListener('touchend', resume);
+        container.removeEventListener('touchcancel', resume);
+      }
+    };
+  }, [totalDots]);
 
   const scrollToDot = (dotIndex: number) => {
     const container = scrollRef.current;

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useDragScroll } from '../hooks/useDragScroll';
@@ -13,6 +13,57 @@ interface PackageSectionProps {
 const PackageSection = ({ title, children, accentColor }: PackageSectionProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   useDragScroll(scrollRef);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let intervalId: ReturnType<typeof setInterval>;
+    
+    const startAutoScroll = () => {
+      intervalId = setInterval(() => {
+        const _container = scrollRef.current;
+        if (!_container) return;
+        
+        const scrollAmount = 320;
+        const maxScroll = _container.scrollWidth - _container.clientWidth;
+        
+        if (_container.scrollLeft >= maxScroll - 10) {
+          _container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          _container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }, 3500);
+    };
+
+    startAutoScroll();
+
+    const pause = () => clearInterval(intervalId);
+    const resume = () => { clearInterval(intervalId); startAutoScroll(); };
+    
+    const isHoverSupported = window.matchMedia('(hover: hover)').matches;
+
+    if (isHoverSupported) {
+      container.addEventListener('mouseenter', pause);
+      container.addEventListener('mouseleave', resume);
+    } else {
+      container.addEventListener('touchstart', pause, { passive: true });
+      container.addEventListener('touchend', resume, { passive: true });
+      container.addEventListener('touchcancel', resume, { passive: true });
+    }
+
+    return () => {
+      clearInterval(intervalId);
+      if (isHoverSupported) {
+        container.removeEventListener('mouseenter', pause);
+        container.removeEventListener('mouseleave', resume);
+      } else {
+        container.removeEventListener('touchstart', pause);
+        container.removeEventListener('touchend', resume);
+        container.removeEventListener('touchcancel', resume);
+      }
+    };
+  }, []);
 
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return;

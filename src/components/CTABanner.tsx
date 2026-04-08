@@ -1,3 +1,4 @@
+import FadeIn from './FadeIn';
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import './CTABanner.css';
@@ -6,12 +7,10 @@ const CTABanner = () => {
   return (
     <section className="cta-banner">
       <div className="cta-banner__container">
-        <motion.div
+        <FadeIn
           className="cta-banner__content"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          direction="up"
+          duration={0.6}
         >
           <h2 className="cta-banner__title">Got travel plans in your mind?</h2>
           <p className="cta-banner__subtitle">We're just a call away!</p>
@@ -33,7 +32,7 @@ const CTABanner = () => {
               WhatsApp Us
             </motion.a>
           </div>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   );

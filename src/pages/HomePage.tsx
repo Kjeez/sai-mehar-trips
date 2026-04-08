@@ -13,9 +13,11 @@ import {
   cruisePackages,
 } from '../data/packagesData';
 
+import PageTransition from '../components/PageTransition';
+
 const HomePage = () => {
   return (
-    <>
+    <PageTransition>
       <Hero />
       <TopDestinations />
 
@@ -75,7 +77,7 @@ const HomePage = () => {
       <ServicesSection />
       <WhyUs />
       <CTABanner />
-    </>
+    </PageTransition>
   );
 };
 

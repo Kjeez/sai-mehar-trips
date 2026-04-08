@@ -3,38 +3,31 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 import './Hero.css';
 
-const heroImages = [
-  '/images/hero_dubai_1774589057519.png',
-  '/images/hero_aurora_1774589075396.png',
-  '/images/hero_vegas_1774589093329.png',
-  '/images/hero_festival_1774589112439.png',
-  '/images/hero_singapore_1774589129848.png',
-];
-
-const headings = [
-  'MEMORIES FOR LIFE',
-  'UNIQUE EXPERIENCE',
-  'GLOBAL TRAVEL',
-  'EXPLORE THE WORLD',
-  'DREAM DESTINATIONS',
+const heroData = [
+  { image: '/images/places/greece.jpg', heading: 'MESMERIZING GREECE' },
+  { image: '/images/places/maldives.jpg', heading: 'MAGICAL MALDIVES' },
+  { image: '/images/places/bali.jpg', heading: 'BEAUTIFUL BALI' },
+  { image: '/images/places/thailand.jpg', heading: 'AMAZING THAILAND' },
+  { image: '/images/places/kashmir.jpg', heading: 'HEAVENLY KASHMIR' },
+  { image: '/images/places/santorini.jpg', heading: 'STUNNING SANTORINI' },
+  { image: '/images/places/manali.jpg', heading: 'MAJESTIC MANALI' },
+  { image: '/images/places/andaman.jpg', heading: 'PRISTINE ANDAMAN' },
+  { image: '/images/places/ladakh.jpg', heading: 'BREATHTAKING LADAKH' },
+  { image: '/images/places/singapore.jpg', heading: 'SPECTACULAR SINGAPORE' },
+  { image: '/images/places/bangkok.jpg', heading: 'BUSTLING BANGKOK' },
+  { image: '/images/places/goa.jpg', heading: 'GLORIOUS GOA' },
+  { image: '/images/places/jaislmer.jpg', heading: 'GOLDEN JAISALMER' },
+  { image: '/images/places/kodaikanal.jpg', heading: 'CAPTIVATING KODAIKANAL' },
+  { image: '/images/places/shillong.jpg', heading: 'SCENIC SHILLONG' },
 ];
 
 const Hero = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentHeadingIndex, setCurrentHeadingIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
 
-  // Image carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Typewriter effect
-  const currentHeading = headings[currentHeadingIndex];
+  // Typewriter effect driving the slide changes
+  const currentHeading = heroData[currentIndex].heading;
 
   const typeNextChar = useCallback(() => {
     if (isTyping) {
@@ -43,7 +36,7 @@ const Hero = () => {
           return currentHeading.slice(0, prev.length + 1);
         }
         // Finished typing, pause then start erasing
-        setTimeout(() => setIsTyping(false), 2000);
+        setTimeout(() => setIsTyping(false), 2500);
         return prev;
       });
     } else {
@@ -51,8 +44,8 @@ const Hero = () => {
         if (prev.length > 0) {
           return prev.slice(0, -1);
         }
-        // Finished erasing, move to next heading
-        setCurrentHeadingIndex((prevIdx) => (prevIdx + 1) % headings.length);
+        // Finished erasing, move to next slide
+        setCurrentIndex((prevIdx) => (prevIdx + 1) % heroData.length);
         setIsTyping(true);
         return '';
       });
@@ -70,10 +63,11 @@ const Hero = () => {
       {/* Background images */}
       <div className="hero__bg-container">
         <AnimatePresence mode="popLayout">
-          <motion.div
-            key={currentImageIndex}
+          <motion.img
+            key={currentIndex}
             className="hero__bg-image"
-            style={{ backgroundImage: `url(${heroImages[currentImageIndex]})` }}
+            src={heroData[currentIndex].image}
+            alt={`${heroData[currentIndex].heading} background`}
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}

@@ -8,14 +8,15 @@ import BlogsPage from './pages/BlogsPage';
 import PackageDetailPage from './pages/PackageDetailPage';
 import DestinationPage from './pages/DestinationPage';
 import VisaPage from './pages/VisaPage';
-import ScrollToTop from './components/ScrollToTop';
+import { useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
-function App() {
+function LocationProvider() {
+  const location = useLocation();
+  
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <Routes>
+    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -24,6 +25,15 @@ function App() {
         <Route path="/destination/:slug" element={<DestinationPage />} />
         <Route path="/visa" element={<VisaPage />} />
       </Routes>
+    </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <LocationProvider />
       <Footer />
     </Router>
   );

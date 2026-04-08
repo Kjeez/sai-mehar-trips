@@ -55,7 +55,7 @@ const Footer = () => {
           <div className="footer__links-col">
             <h4 className="footer__col-title">Services</h4>
             <Link to="/visa" className="footer__link">Visa Services</Link>
-            <Link to="/passport" className="footer__link">Passport Services</Link>
+            <a href="/#services" className="footer__link">Passport Services</a>
             <a href="#airfare" className="footer__link">Airfare</a>
             <a href="#honeymoon" className="footer__link">Honeymoon Packages</a>
           </div>

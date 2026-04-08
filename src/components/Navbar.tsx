@@ -169,7 +169,7 @@ const Navbar = () => {
               {/* Links */}
               <Link to="/blogs" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Blogs</Link>
               <Link to="/visa" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Visa Services</Link>
-              <Link to="/passport" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Passport Services</Link>
+              <a href="/#services" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Passport Services</a>
               <Link to="/about" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>About Us</Link>
               <Link to="/contact" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
               <a href="#privacy" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Privacy Policy</a>

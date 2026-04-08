@@ -57,58 +57,91 @@ const allPosts = [
   },
 ];
 
+import PageTransition from '../components/PageTransition';
+
 const BlogsPage = () => {
   return (
-    <div className="blogs-page">
-      {/* Hero */}
-      <div className="blogs-page__hero">
-        <div className="blogs-page__hero-overlay" />
-        <img src="/images/hero_aurora_1774589075396.png" alt="Blogs" className="blogs-page__hero-img" />
-        <div className="blogs-page__hero-content">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            OUR BLOGS
-          </motion.h1>
-          <p>Home / Blogs</p>
-        </div>
-      </div>
-
-      {/* Featured Posts */}
-      <section className="blogs-page__featured">
-        <div className="blogs-page__container">
-          <div className="blogs-page__featured-grid">
-            {/* Main featured */}
-            <motion.article
-              className="blogs-page__featured-main"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+    <PageTransition>
+      <div className="blogs-page">
+        {/* Hero */}
+        <div className="blogs-page__hero">
+          <div className="blogs-page__hero-overlay" />
+          <img src="/images/hero_aurora_1774589075396.png" alt="Blogs" className="blogs-page__hero-img" />
+          <div className="blogs-page__hero-content">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <img src={featuredPosts[0].image} alt={featuredPosts[0].title} />
-              <div className="blogs-page__featured-content">
-                <span className="blogs-page__date">{featuredPosts[0].date}</span>
-                <h2>{featuredPosts[0].title}</h2>
-                <p>{featuredPosts[0].excerpt}</p>
-              </div>
-            </motion.article>
+              OUR BLOGS
+            </motion.h1>
+            <p>Home / Blogs</p>
+          </div>
+        </div>
 
-            {/* Side featured */}
-            <div className="blogs-page__featured-side">
-              {featuredPosts.slice(1).map((post, i) => (
+        {/* Featured Posts */}
+        <section className="blogs-page__featured">
+          <div className="blogs-page__container">
+            <div className="blogs-page__featured-grid">
+              {/* Main featured */}
+              <motion.article
+                className="blogs-page__featured-main"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <img src={featuredPosts[0].image} alt={featuredPosts[0].title} />
+                <div className="blogs-page__featured-content">
+                  <span className="blogs-page__date">{featuredPosts[0].date}</span>
+                  <h2>{featuredPosts[0].title}</h2>
+                  <p>{featuredPosts[0].excerpt}</p>
+                </div>
+              </motion.article>
+
+              {/* Side featured */}
+              <div className="blogs-page__featured-side">
+                {featuredPosts.slice(1).map((post, i) => (
+                  <motion.article
+                    key={post.id}
+                    className="blogs-page__featured-card"
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                  >
+                    <img src={post.image} alt={post.title} />
+                    <div className="blogs-page__featured-card-text">
+                      <span className="blogs-page__date">{post.date}</span>
+                      <h3>{post.title}</h3>
+                      <p>{post.excerpt}</p>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* All Blogs */}
+        <section className="blogs-page__all">
+          <div className="blogs-page__container">
+            <h2 className="blogs-page__section-title">All Blogs</h2>
+            <div className="blogs-page__all-grid">
+              {allPosts.map((post, i) => (
                 <motion.article
                   key={post.id}
-                  className="blogs-page__featured-card"
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  className="blogs-page__card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  whileHover={{ y: -6 }}
                 >
-                  <img src={post.image} alt={post.title} />
-                  <div className="blogs-page__featured-card-text">
+                  <div className="blogs-page__card-img-wrap">
+                    <img src={post.image} alt={post.title} />
+                  </div>
+                  <div className="blogs-page__card-body">
                     <span className="blogs-page__date">{post.date}</span>
                     <h3>{post.title}</h3>
                     <p>{post.excerpt}</p>
@@ -117,38 +150,9 @@ const BlogsPage = () => {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* All Blogs */}
-      <section className="blogs-page__all">
-        <div className="blogs-page__container">
-          <h2 className="blogs-page__section-title">All Blogs</h2>
-          <div className="blogs-page__all-grid">
-            {allPosts.map((post, i) => (
-              <motion.article
-                key={post.id}
-                className="blogs-page__card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                whileHover={{ y: -6 }}
-              >
-                <div className="blogs-page__card-img-wrap">
-                  <img src={post.image} alt={post.title} />
-                </div>
-                <div className="blogs-page__card-body">
-                  <span className="blogs-page__date">{post.date}</span>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </PageTransition>
   );
 };
 

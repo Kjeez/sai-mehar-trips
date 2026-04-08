@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import FadeIn from './FadeIn';
 import { FiMap, FiCheckCircle, FiCompass, FiShield } from 'react-icons/fi';
 import './WhyUs.css';
 
@@ -29,33 +29,28 @@ const WhyUs = () => {
   return (
     <section className="why-us" id="why-us">
       <div className="why-us__container">
-        <motion.div
+        <FadeIn
           className="why-us__header"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          direction="up"
         >
           <h2 className="why-us__title">Why Sai Mehar Trips Pvt Ltd?</h2>
           <p className="why-us__subtitle">
             Because travel shouldn't be complicated. It should be exciting, immersive, and totally stress-free.
           </p>
-        </motion.div>
+        </FadeIn>
 
         <div className="why-us__grid">
           {features.map((f, i) => (
-            <motion.div
+            <FadeIn
               key={f.title}
               className="why-us__card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              direction="up"
+              delay={i * 0.1}
             >
               <div className="why-us__icon">{f.icon}</div>
               <h3 className="why-us__card-title">{f.title}</h3>
               <p className="why-us__card-desc">{f.desc}</p>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

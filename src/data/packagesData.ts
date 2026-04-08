@@ -51,14 +51,14 @@ export const destinationsData: DestinationInfo[] = [
   {
     slug: 'bali',
     name: 'Bali',
-    heroImage: '/images/dest_bali_1774589152092.png',
+    heroImage: '/images/places/bali.jpg',
     tagline: 'Island of the Gods',
     description: 'Bali is a tropical paradise known for its stunning beaches, ancient temples, terraced rice paddies, and vibrant culture. From the mystical Uluwatu Temple perched on dramatic cliffs to the lush rice terraces of Ubud, Bali offers a perfect blend of adventure, relaxation, and spiritual discovery. Experience world-class surfing, rejuvenating spa treatments, and unforgettable sunsets over the Indian Ocean.',
   },
   {
     slug: 'singapore',
     name: 'Singapore',
-    heroImage: '/images/dest_singapore_1774589168899.png',
+    heroImage: '/images/places/singapore.jpg',
     tagline: 'The Lion City',
     description: 'Singapore is a dazzling city-state that seamlessly blends futuristic architecture with rich cultural heritage. Explore the iconic Marina Bay Sands, wander through the enchanting Gardens by the Bay, and thrill at Universal Studios. From hawker centres serving legendary street food to luxury shopping on Orchard Road, Singapore delivers an unforgettable urban escape.',
   },
@@ -79,7 +79,7 @@ export const destinationsData: DestinationInfo[] = [
   {
     slug: 'thailand',
     name: 'Thailand',
-    heroImage: '/images/dest_thailand_1774589225140.png',
+    heroImage: '/images/places/thailand.jpg',
     tagline: 'Land of Smiles',
     description: 'Thailand captivates with its stunning islands, ornate temples, world-renowned cuisine, and legendary hospitality. From the bustling streets of Bangkok to the crystal-clear waters of Phuket and Krabi, Thailand offers the perfect mix of adventure, culture, and relaxation for every type of traveler.',
   },
@@ -107,7 +107,7 @@ export const destinationsData: DestinationInfo[] = [
   {
     slug: 'maldives',
     name: 'Maldives',
-    heroImage: '/images/pkg_maldives.png',
+    heroImage: '/images/places/maldives.jpg',
     tagline: 'Paradise on Earth',
     description: 'The Maldives is the ultimate tropical escape — crystal-clear turquoise waters, overwater villas, pristine white-sand beaches, and some of the world\'s best diving and snorkeling spots. Perfect for honeymoons, luxury getaways, and anyone seeking pure paradise.',
   },
@@ -150,7 +150,7 @@ export const internationalPackages: Package[] = [
     duration: '4N/5D',
     price: '₹39,999/-',
     priceNote: 'Per Person with Flight',
-    image: '/images/pkg_bangkok.png',
+    image: '/images/places/bangkok.jpg',
     included: ['Welcome meet on arrival', 'Daily breakfast', 'Accommodation'],
     itinerary: [
       { day: 'Day 1', description: 'Arrival Bangkok airport, transfer to Pattaya hotel, evening free for Walking Street and nightlife' },
@@ -168,7 +168,7 @@ export const internationalPackages: Package[] = [
     duration: '4N/5D',
     price: '₹75,000/-',
     priceNote: 'Per Person Ex Male',
-    image: '/images/pkg_maldives.png',
+    image: '/images/places/maldives.jpg',
     included: [
       'Welcome meet on arrival',
       'Daily Breakfast, Lunch and Dinner',
@@ -186,7 +186,7 @@ export const internationalPackages: Package[] = [
     duration: '6N/7D',
     price: '₹29,990/-',
     priceNote: 'Per Person Ex Bali',
-    image: '/images/dest_bali_1774589152092.png',
+    image: '/images/places/bali.jpg',
     included: ['Welcome meet on arrival', 'Daily breakfast', 'Accommodation'],
     itinerary: [
       { day: 'Day 1', description: 'Arrival Bali Airport, transfer to Hotel, Candle Light Dinner on Jimbaran Beach' },
@@ -225,7 +225,7 @@ export const internationalPackages: Package[] = [
     duration: '4N/5D',
     price: '₹82,500/-',
     priceNote: 'Ex Delhi',
-    image: '/images/dest_singapore_1774589168899.png',
+    image: '/images/places/singapore.jpg',
     included: ['Welcome meet on arrival', 'Daily breakfast in hotel', 'Visa', 'Airfare on Direct Flight', '4N Stay'],
     itinerary: [
       { day: 'Day 1', description: 'Arrival Singapore, transfer to hotel, enjoy Night Safari' },
@@ -243,7 +243,7 @@ export const internationalPackages: Package[] = [
     duration: '6N/7D',
     price: '₹1,25,000/-',
     priceNote: 'Per Person with Flight',
-    image: '/images/hero_singapore_1774589129848.png',
+    image: '/images/places/singapore.jpg',
     included: ['Welcome meet on arrival', 'Daily breakfast in hotel', 'Visa', 'Airfare Direct Flight'],
     itinerary: [
       { day: 'Day 1', description: 'Arrival Singapore, transfer to hotel, Evening Night Safari' },
@@ -273,16 +273,16 @@ export const internationalPackages: Package[] = [
 // DOMESTIC PACKAGES
 // ─────────────────────────────────────────────
 export const domesticPackages: DomesticPackage[] = [
-  { id: 'kashmir', title: 'KASHISH E KASHMIR', duration: '4N/5D', image: '/images/pkg_kashmir.png' },
+  { id: 'kashmir', title: 'KASHISH E KASHMIR', duration: '4N/5D', image: '/images/places/kashmir.jpg' },
   { id: 'sikkim', title: 'BEAT THE HEAT SIKKIM DARJEELING', duration: '5N/6D', image: '/images/pkg_sikkim.png' },
   { id: 'kerala', title: "GOD'S OWN KERALA", duration: '4N/5D', image: '/images/pkg_kerala.png' },
-  { id: 'goa', title: 'GO GOA', duration: '3N/4D', image: '/images/pkg_goa.png' },
-  { id: 'ooty', title: 'SOUTH DELIGHT OOTY + KODAIKANAL', duration: '4N/5D', image: '/images/pkg_ooty.png' },
-  { id: 'ladakh', title: 'LADAKH', duration: '5N/6D', image: '/images/pkg_ladakh.png' },
-  { id: 'andaman', title: 'ANDAMAN', duration: '5N/6D', image: '/images/pkg_andaman.png' },
+  { id: 'goa', title: 'GO GOA', duration: '3N/4D', image: '/images/places/goa.jpg' },
+  { id: 'ooty', title: 'SOUTH DELIGHT OOTY + KODAIKANAL', duration: '4N/5D', image: '/images/places/kodaikanal.jpg' },
+  { id: 'ladakh', title: 'LADAKH', duration: '5N/6D', image: '/images/places/ladakh.jpg' },
+  { id: 'andaman', title: 'ANDAMAN', duration: '5N/6D', image: '/images/places/andaman.jpg' },
   { id: 'udaipur', title: 'UDAIPUR + MOUNT ABU', duration: '4N/5D', image: '/images/pkg_udaipur.png' },
-  { id: 'jaisalmer', title: 'JODHPUR + JAISALMER', duration: '4N/5D', image: '/images/pkg_jaisalmer.png' },
-  { id: 'manali', title: 'MANALI', duration: '3N/4D', image: '/images/pkg_manali.png' },
+  { id: 'jaisalmer', title: 'JODHPUR + JAISALMER', duration: '4N/5D', image: '/images/places/jaislmer.jpg' },
+  { id: 'manali', title: 'MANALI', duration: '3N/4D', image: '/images/places/manali.jpg' },
 ];
 
 // ─────────────────────────────────────────────
@@ -409,11 +409,11 @@ export const airfareServices = {
 // MENU CATEGORIES
 // ─────────────────────────────────────────────
 export const menuCategories = [
-  { title: 'Sai Mehar Specials', image: '/images/dest_bali_1774589152092.png' },
-  { title: 'International Trips', image: '/images/hero_dubai_1774589057519.png' },
-  { title: 'Domestic Trips', image: '/images/pkg_kashmir.png' },
-  { title: 'Custom Trips', image: '/images/pkg_manali.png' },
-  { title: 'Pilgrimage Tours', image: '/images/pkg_temple.png' },
+  { title: 'Sai Mehar Specials', image: '/images/places/bali.jpg' },
+  { title: 'International Trips', image: '/images/places/singapore.jpg' },
+  { title: 'Domestic Trips', image: '/images/places/kashmir.jpg' },
+  { title: 'Custom Trips', image: '/images/places/manali.jpg' },
+  { title: 'Pilgrimage Tours', image: '/images/places/greece.jpg' },
 ];
 
 // Tagline
