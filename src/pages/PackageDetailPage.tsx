@@ -5,7 +5,7 @@ import {
   FiChevronDown, FiChevronLeft, FiChevronRight, FiCalendar,
   FiMapPin, FiGlobe, FiCheck, FiX, FiPhone,
 } from 'react-icons/fi';
-import { internationalPackages, pilgrimagePackages } from '../data/packagesData';
+import { internationalPackages, pilgrimagePackages, domesticPackages } from '../data/packagesData';
 import PackageCard from '../components/PackageCard';
 import WhyUs from '../components/WhyUs';
 import './PackageDetailPage.css';
@@ -14,8 +14,9 @@ import PageTransition from '../components/PageTransition';
 
 const PackageDetailPage = () => {
   const { id } = useParams<{ id: string }>();
-  const pkg = internationalPackages.find((p) => p.id === id) || pilgrimagePackages.find((p) => p.id === id);
+  const pkg = internationalPackages.find((p) => p.id === id) || pilgrimagePackages.find((p) => p.id === id) || domesticPackages.find((p) => p.id === id);
   const isPilgrimage = pilgrimagePackages.some((p) => p.id === id);
+  const isDomestic = domesticPackages.some((p) => p.id === id);
   const [currentImg, setCurrentImg] = useState(0);
   const [openDay, setOpenDay] = useState<number | null>(0);
 
@@ -37,7 +38,7 @@ const PackageDetailPage = () => {
     '/images/hero_singapore_1774589129848.png',
   ];
 
-  const allSimilar = isPilgrimage ? pilgrimagePackages : internationalPackages;
+  const allSimilar = isPilgrimage ? pilgrimagePackages : isDomestic ? domesticPackages : internationalPackages;
   const similarPkgs = allSimilar.filter((p) => p.id !== pkg.id).slice(0, 4);
 
   return (
@@ -82,8 +83,8 @@ const PackageDetailPage = () => {
 
             <div className="pkgdetail__meta">
               <span className="pkgdetail__meta-item"><FiCalendar size={15} /> {pkg.duration}</span>
-              <span className="pkgdetail__meta-item"><FiMapPin size={15} /> {pkg.id.includes('singapore') ? 'Singapore' : pkg.id.includes('phuket') ? 'Thailand' : pkg.id.includes('bangkok') ? 'Thailand' : pkg.id.includes('bali') ? 'Indonesia' : pkg.id.includes('maldives') ? 'Maldives' : pkg.id.includes('srilanka') ? 'Sri Lanka' : pkg.id.includes('newzealand') ? 'New Zealand' : 'International'}</span>
-              <span className="pkgdetail__meta-item"><FiGlobe size={15} /> {isPilgrimage ? 'Pilgrimage Tour' : 'International'}</span>
+              <span className="pkgdetail__meta-item"><FiMapPin size={15} /> {isDomestic ? 'India' : pkg.id.includes('singapore') ? 'Singapore' : pkg.id.includes('phuket') ? 'Thailand' : pkg.id.includes('bangkok') ? 'Thailand' : pkg.id.includes('bali') ? 'Indonesia' : pkg.id.includes('maldives') ? 'Maldives' : pkg.id.includes('srilanka') ? 'Sri Lanka' : pkg.id.includes('newzealand') ? 'New Zealand' : 'International'}</span>
+              <span className="pkgdetail__meta-item"><FiGlobe size={15} /> {isPilgrimage ? 'Pilgrimage Tour' : isDomestic ? 'Domestic Trip' : 'International Tour'}</span>
             </div>
 
             {/* Overview */}
@@ -138,7 +139,7 @@ const PackageDetailPage = () => {
                 <div className="pkgdetail__incl-col">
                   <h3 className="pkgdetail__incl-heading pkgdetail__incl-heading--green">Inclusions</h3>
                   <ul className="pkgdetail__incl-list">
-                    {pkg.included.map((item, i) => (
+                    {pkg.included?.map((item, i) => (
                       <li key={i}>
                         <FiCheck size={14} className="pkgdetail__incl-icon pkgdetail__incl-icon--green" />
                         {item}
@@ -197,7 +198,7 @@ const PackageDetailPage = () => {
                 </div>
                 <div className="pkgdetail__sidebar-info-item">
                   <FiGlobe size={14} />
-                  <span>{isPilgrimage ? 'Pilgrimage Tour' : 'International Trip'}</span>
+                  <span>{isPilgrimage ? 'Pilgrimage Tour' : isDomestic ? 'Domestic Trip' : 'International Trip'}</span>
                 </div>
               </div>
             </div>

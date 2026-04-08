@@ -4,7 +4,8 @@ import { FiBriefcase, FiMap, FiClock, FiUserCheck, FiArrowRight, FiCheckCircle, 
 import WhyUs from '../components/WhyUs';
 import CTABanner from '../components/CTABanner';
 import EnquiryModal from '../components/EnquiryModal';
-import { visaCountries } from '../data/packagesData';
+import { visaCountries, passportServices, airfareServices } from '../data/packagesData';
+import { useLocation } from 'react-router-dom';
 import './VisaPage.css';
 
 const visaCategories = [
@@ -83,9 +84,22 @@ const VisaPage = () => {
     setModalOpen(true);
   };
 
+  const location = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    // Handle anchor links from NavBar
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 550); // delay for page transition
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.hash]);
 
   return (
     <PageTransition>
@@ -229,6 +243,50 @@ const VisaPage = () => {
                 <FiPhone size={16} /> Talk to an Expert <FiArrowRight size={16} />
               </button>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Passport Services */}
+        <section id="passport" className="visapage__passport">
+          <div className="visapage__container">
+            <div className="visapage__section-header">
+              <span className="visapage__section-badge">DOCUMENTATION</span>
+              <h2 className="visapage__section-title">Passport Services</h2>
+              <p className="visapage__section-subtitle">Simplified passport acquisition and renewal</p>
+            </div>
+            
+            <div className="visapage__passport-grid">
+              {passportServices.pricing.map((p) => (
+                <div key={p.type} className="visapage__passport-card">
+                  <h3 className="visapage__passport-type">{p.type} Application</h3>
+                  <div className="visapage__passport-price">{p.price}</div>
+                  <button className="visapage__docs-btn" style={{marginTop: '20px'}} onClick={() => openModal()}>
+                    Select Plan <FiArrowRight size={16} />
+                  </button>
+                </div>
+              ))}
+            </div>
+            <p style={{textAlign: 'center', marginTop: '20px', color: 'var(--text-muted)'}}>{passportServices.note}</p>
+          </div>
+        </section>
+
+        {/* Airfare Services */}
+        <section id="airfare" className="visapage__airfare">
+          <div className="visapage__container">
+            <div className="visapage__section-header">
+              <span className="visapage__section-badge">FLIGHTS</span>
+              <h2 className="visapage__section-title">Airfare Services</h2>
+              <p className="visapage__section-subtitle">Competitive fares for {airfareServices.types.join(' and ')} travel</p>
+            </div>
+            
+            <div className="visapage__airfare-features">
+              {airfareServices.features.map((f, i) => (
+                <div key={f} className="visapage__airfare-feature-card">
+                  <div className="visapage__airfare-icon">0{i + 1}</div>
+                  <h4>{f}</h4>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

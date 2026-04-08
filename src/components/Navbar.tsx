@@ -122,12 +122,12 @@ const Navbar = () => {
                     >
                       <div className="fullmenu__dest-grid">
                         {destinations.map((d) => (
-                          <a key={d.name} href={`#${d.name.toLowerCase()}`} className="fullmenu__dest-item" onClick={() => setIsMenuOpen(false)}>
+                          <Link key={d.name} to={`/destination/${d.name.toLowerCase().replace(/ /g, '-')}`} className="fullmenu__dest-item" onClick={() => setIsMenuOpen(false)}>
                             <div className="fullmenu__dest-img-wrap">
                               <img src={d.image} alt={d.name} className="fullmenu__dest-img" />
                             </div>
                             <span className="fullmenu__dest-name">{d.name}</span>
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </motion.div>
@@ -155,10 +155,10 @@ const Navbar = () => {
                     >
                       <div className="fullmenu__cat-grid">
                         {menuCategories.map((c) => (
-                          <a key={c.title} href="#" className="fullmenu__cat-card" onClick={() => setIsMenuOpen(false)}>
+                          <Link key={c.title} to={`/category/${c.title.toLowerCase().replace(/ /g, '-')}`} className="fullmenu__cat-card" onClick={() => setIsMenuOpen(false)}>
                             <img src={c.image} alt={c.title} className="fullmenu__cat-img" />
                             <span className="fullmenu__cat-title">{c.title}</span>
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </motion.div>
@@ -169,7 +169,8 @@ const Navbar = () => {
               {/* Links */}
               <Link to="/blogs" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Blogs</Link>
               <Link to="/visa" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Visa Services</Link>
-              <a href="/#services" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Passport Services</a>
+              <Link to="/visa#passport" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Passport Services</Link>
+              <Link to="/visa#airfare" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Airfare Services</Link>
               <Link to="/about" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>About Us</Link>
               <Link to="/contact" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
               <a href="#privacy" className="fullmenu__link" onClick={() => setIsMenuOpen(false)}>Privacy Policy</a>

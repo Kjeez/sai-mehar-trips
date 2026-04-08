@@ -1,167 +1,270 @@
 .services {
-  padding: 60px 0 70px;
-  background: var(--bg-light);
+  padding: 100px 0;
+  background: var(--primary-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glowing orbs for glassmorphism effect */
+.services::before,
+.services::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.services::before {
+  top: -100px;
+  left: -100px;
+  background: rgba(52, 152, 219, 0.3); /* Visa Blue */
+}
+
+.services::after {
+  bottom: -150px;
+  right: -100px;
+  background: rgba(231, 76, 60, 0.25); /* Airfare Red */
 }
 
 .services__container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .services__main-title {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: 800;
-  color: var(--primary-dark);
-  margin-bottom: 40px;
+  color: var(--text-white);
+  margin-bottom: 60px;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   display: inline-block;
+  letter-spacing: -0.5px;
 }
 
 .services__title-bar {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 50px;
-  height: 3px;
-  background: var(--primary-accent);
-  border-radius: 2px;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-accent), #ff8a65);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
 }
 
 .services__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 32px;
 }
 
 .services__card {
-  background: var(--bg-white);
-  border-radius: 16px;
-  padding: 28px 24px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-  transition: all var(--transition-medium);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer effect on hover */
+.services__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: 0.6s;
+  z-index: 1;
+}
+
+.services__card:hover::before {
+  left: 150%;
 }
 
 .services__card:hover {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .services__card-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-white);
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+  box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.2);
 }
 
 .services__card-icon--visa {
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  box-shadow: 0 8px 24px rgba(79, 172, 254, 0.4), inset 0 2px 4px rgba(255,255,255,0.3);
 }
 
 .services__card-icon--passport {
-  background: linear-gradient(135deg, #27ae60, #219a52);
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  box-shadow: 0 8px 24px rgba(67, 233, 123, 0.4), inset 0 2px 4px rgba(255,255,255,0.3);
 }
 
 .services__card-icon--airfare {
-  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+  box-shadow: 0 8px 24px rgba(255, 8, 68, 0.4), inset 0 2px 4px rgba(255,255,255,0.3);
 }
 
 .services__card-title {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--primary-dark);
-  margin-bottom: 8px;
+  color: var(--text-white);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+  z-index: 2;
 }
 
 .services__card-subtitle {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
   font-weight: 400;
+  z-index: 2;
 }
 
 .services__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 24px;
   flex-grow: 1;
+  z-index: 2;
 }
 
 .services__tag {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  padding: 4px 10px;
-  background: #f0f4f8;
-  color: var(--primary-dark);
-  border-radius: 20px;
-  border: 1px solid #e0e5eb;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.services__tag:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .services__tag--more {
-  background: var(--primary-accent);
-  color: var(--text-white);
-  border-color: var(--primary-accent);
+  background: rgba(79, 172, 254, 0.2);
+  color: #4facfe;
+  border-color: rgba(79, 172, 254, 0.4);
+}
+
+.services__tag--more:hover {
+  background: rgba(79, 172, 254, 0.3);
 }
 
 .services__pricing {
   display: flex;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  z-index: 2;
 }
 
 .services__price-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  background: #f0f4f8;
-  padding: 12px 20px;
-  border-radius: 12px;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   flex: 1;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.services__price-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 .services__price-label {
   font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .services__price-value {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary-accent);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #43e97b;
+  text-shadow: 0 2px 10px rgba(67, 233, 123, 0.3);
 }
 
 .services__note {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 24px;
   flex-grow: 1;
+  z-index: 2;
+  line-height: 1.5;
 }
 
 .services__features {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   flex-grow: 1;
+  z-index: 2;
 }
 
 .services__feature {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  color: #555;
-  padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.2s ease;
+}
+
+.services__feature:hover {
+  color: #ffffff;
+}
+
+.services__feature svg {
+  color: #ffb199;
 }
 
 .services__feature:last-child {
@@ -170,19 +273,36 @@
 
 .services__card-btn {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, var(--primary-accent), #e85d4a);
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.1);
   color: var(--text-white);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 10px;
-  transition: all var(--transition-fast);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
   margin-top: auto;
+  z-index: 2;
+  backdrop-filter: blur(10px);
 }
 
 .services__card-btn:hover {
-  background: linear-gradient(135deg, var(--primary-accent-hover), #d94a38);
-  transform: translateY(-1px);
+  background: var(--text-white);
+  color: var(--primary-dark);
+  border-color: var(--text-white);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Specific glows for buttons based on card type to add to hover flair */
+.services__card:nth-child(1) .services__card-btn:hover {
+  box-shadow: 0 4px 20px rgba(79, 172, 254, 0.4);
+}
+.services__card:nth-child(2) .services__card-btn:hover {
+  box-shadow: 0 4px 20px rgba(67, 233, 123, 0.4);
+}
+.services__card:nth-child(3) .services__card-btn:hover {
+  box-shadow: 0 4px 20px rgba(255, 8, 68, 0.4);
 }
 
 @media (max-width: 1024px) {
@@ -191,21 +311,27 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .services {
-    padding: 40px 0;
+    padding: 70px 0;
   }
+  .services__card {
+    padding: 28px 24px;
+  }
+}
 
+@media (max-width: 640px) {
   .services__container {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
   .services__grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
 
   .services__main-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
   }
 }
