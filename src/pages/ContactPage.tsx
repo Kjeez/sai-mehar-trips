@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiPhone, FiMapPin, FiSend, FiChevronDown } from 'react-icons/fi';
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import './ContactPage.css';
 
 const faqs = [

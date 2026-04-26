@@ -1,4 +1,5 @@
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import type { FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiCheckCircle } from 'react-icons/fi';
 import { useCallbackModal } from '../contexts/CallbackModalContext';
