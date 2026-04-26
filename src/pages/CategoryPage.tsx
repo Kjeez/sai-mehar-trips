@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { FiUser, FiMail, FiPhone } from 'react-icons/fi';
 import { getCategoryPackages, destinationsData } from '../data/packagesData';
 import PackageCard from '../components/PackageCard';
+import PackageSection from '../components/PackageSection';
 import PageTransition from '../components/PageTransition';
 import './CategoryPage.css';
 
@@ -44,10 +45,13 @@ const CategoryPage = () => {
   }, [slug]);
 
   // Use an appropriate hero image based on slug
-  let heroImg = '/images/hero_mountain.png'; // default
+  let heroImg = '/images/hero_dubai_1774589057519.png'; // default
   if (slug === 'international-trips') heroImg = '/images/hero_dubai_1774589057519.png';
   if (slug === 'domestic-trips') heroImg = '/images/dest_srilanka_1774589206836.png'; // placeholder
-  if (slug === 'cruises') heroImg = '/images/places/maldives.jpg';
+  if (slug === 'cruises') heroImg = '/images/pkg_maldives.png';
+  if (slug === 'sai-mehar-specials') heroImg = '/images/pkg_phuket.png';
+  if (slug === 'custom-trips') heroImg = '/images/hero_festival_1774589112439.png';
+  if (slug === 'pilgrimage-tours') heroImg = '/images/places/pkg_rameshwaram.png';
 
   return (
     <PageTransition>
@@ -105,22 +109,21 @@ const CategoryPage = () => {
         {(slug === 'international-trips' || slug === 'domestic-trips' || slug === 'sai-mehar-specials') && (
           <section className="category__section" style={{ paddingTop: '80px', paddingBottom: '20px' }}>
             <h2 className="category__section-title">All {title} Destinations</h2>
-            <div className="category__destinations" style={{ display: 'flex', overflowX: 'auto', gap: '20px', paddingBottom: '20px' }}>
+            <div className="category__destinations">
               {destinationsData.map((dest) => (
-                <Link to={`/destination/${dest.slug}`} key={dest.slug} style={{ display: "flex", flexDirection: "column", alignItems: "center", textDecoration: "none", minWidth: "120px" }}>
-                  <img src={dest.heroImage} alt={dest.name} style={{ width: "120px", height: "120px", borderRadius: "50%", objectFit: "cover", marginBottom: "15px", boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }} />
-                  <span style={{ fontWeight: "700", color: "var(--primary-dark)" }}>{dest.name}</span>
+                <Link to={`/destination/${dest.slug}`} key={dest.slug} className="category__dest-item">
+                  <img src={dest.heroImage} alt={dest.name} />
+                  <span>{dest.name}</span>
                 </Link>
               ))}
             </div>
           </section>
         )}
 
-        {/* Packages Grid */}
-        <section className="category__section">
-          <h2 className="category__section-title">Best {title} Packages</h2>
-          {packages.length > 0 ? (
-            <div className="category__pkg-grid">
+        {/* Packages List */}
+        {packages.length > 0 ? (
+          <div style={{ paddingBottom: '60px' }}>
+            <PackageSection title={`Best ${title} Packages`}>
               {packages.map((pkg) => (
                 <Link to={`/package/${pkg.id}`} key={pkg.id} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <PackageCard 
@@ -134,11 +137,14 @@ const CategoryPage = () => {
                   />
                 </Link>
               ))}
-            </div>
-          ) : (
+            </PackageSection>
+          </div>
+        ) : (
+          <section className="category__section">
+            <h2 className="category__section-title">Best {title} Packages</h2>
             <p>No packages found for this category currently.</p>
-          )}
-        </section>
+          </section>
+        )}
 
       </div>
     </PageTransition>
