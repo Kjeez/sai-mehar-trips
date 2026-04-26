@@ -57,13 +57,75 @@ const PackageDetailPage = () => {
   }
 
   // Build a gallery from available images
-  const gallery = [
-    pkg.image,
-    '/images/hero_dubai_1774589057519.png',
-    '/images/hero_aurora_1774589075396.png',
-    '/images/hero_festival_1774589112439.png',
-    '/images/hero_singapore_1774589129848.png',
-  ];
+  const getRelevantImages = () => {
+    // A mapping of keywords to available images
+    const imageBank = [
+      { keywords: ['phuket', 'krabi', 'thailand', 'bangkok', 'pattaya'], img: '/images/dest_thailand_1774589225140.png' },
+      { keywords: ['phuket', 'krabi', 'thailand'], img: '/images/pkg_phuket_1774590895663.png' },
+      { keywords: ['bangkok', 'pattaya', 'thailand'], img: '/images/pkg_bangkok_1774590915952.png' },
+      { keywords: ['thailand'], img: '/images/places/thailand.jpg' },
+      { keywords: ['bangkok'], img: '/images/places/bangkok.jpg' },
+      { keywords: ['bangkok'], img: '/images/places/bangkok (2).jpg' },
+      { keywords: ['maldives'], img: '/images/places/maldives.jpg' },
+      { keywords: ['maldives'], img: '/images/pkg_maldives_1774590938672.png' },
+      { keywords: ['bali', 'indonesia'], img: '/images/dest_bali_1774589152092.png' },
+      { keywords: ['bali', 'indonesia'], img: '/images/places/bali.jpg' },
+      { keywords: ['srilanka', 'colombo'], img: '/images/dest_srilanka_1774589206836.png' },
+      { keywords: ['singapore'], img: '/images/dest_singapore_1774589168899.png' },
+      { keywords: ['singapore'], img: '/images/places/singapore.jpg' },
+      { keywords: ['singapore'], img: '/images/hero_singapore_1774589129848.png' },
+      { keywords: ['newzealand', 'auckland'], img: '/images/pkg_newzealand_1774590964653.png' },
+      { keywords: ['newzealand'], img: '/images/pkg_newzealand.png' },
+      
+      { keywords: ['kashmir', 'srinagar', 'gulmarg'], img: '/images/places/kashmir.jpg' },
+      { keywords: ['kashmir'], img: '/images/pkg_kashmir.png' },
+      { keywords: ['sikkim', 'darjeeling', 'gangtok'], img: '/images/pkg_sikkim.png' },
+      { keywords: ['kerala', 'munnar', 'cochin'], img: '/images/pkg_kerala.png' },
+      { keywords: ['goa'], img: '/images/places/goa.jpg' },
+      { keywords: ['goa'], img: '/images/pkg_goa.png' },
+      { keywords: ['ooty', 'kodaikanal'], img: '/images/places/kodaikanal.jpg' },
+      { keywords: ['ooty'], img: '/images/pkg_ooty.png' },
+      { keywords: ['ladakh', 'leh'], img: '/images/places/ladakh.jpg' },
+      { keywords: ['ladakh'], img: '/images/pkg_ladakh.png' },
+      { keywords: ['andaman', 'port blair'], img: '/images/places/andaman.jpg' },
+      { keywords: ['andaman'], img: '/images/pkg_andaman.png' },
+      { keywords: ['udaipur', 'mount abu'], img: '/images/pkg_udaipur.png' },
+      { keywords: ['jodhpur', 'jaisalmer'], img: '/images/places/jaislmer.jpg' },
+      { keywords: ['jaisalmer'], img: '/images/pkg_jaisalmer.png' },
+      { keywords: ['manali'], img: '/images/places/manali.jpg' },
+      { keywords: ['manali'], img: '/images/pkg_manali.png' },
+
+      { keywords: ['baidyanath', 'deoghar'], img: '/images/places/pkg_baidyanath.png' },
+      { keywords: ['somnath', 'dwarka'], img: '/images/places/pkg_somnath.png' },
+      { keywords: ['ayodhya', 'kashi', 'varanasi'], img: '/images/places/pkg_ayodhya.png' },
+      { keywords: ['rameshwaram', 'kanyakumari', 'madurai'], img: '/images/places/pkg_rameshwaram.png' },
+      { keywords: ['shirdi'], img: '/images/places/pkg_shirdi.png' },
+      { keywords: ['mallikarjuna'], img: '/images/places/pkg_mallikarjuna.png' },
+      { keywords: ['mahakaleshwar'], img: '/images/places/pkg_mahakaleshwar.png' },
+      { keywords: ['pilgrimage', 'temple'], img: '/images/pkg_temple.png' },
+    ];
+
+    const searchStr = `${pkg.title} ${pkg.id} ${'destination' in pkg ? pkg.destination : ''}`.toLowerCase();
+    
+    const matchedImages = imageBank
+      .filter(item => item.keywords.some(kw => searchStr.includes(kw)))
+      .map(item => item.img);
+
+    // If no specific matches, add some generic beautiful ones based on category
+    if (matchedImages.length === 0) {
+      if (isPilgrimage) {
+        matchedImages.push('/images/pkg_temple.png');
+      } else if (isDomestic) {
+        matchedImages.push('/images/places/kashmir.jpg', '/images/places/andaman.jpg');
+      } else {
+        matchedImages.push('/images/hero_dubai_1774589057519.png', '/images/places/maldives.jpg');
+      }
+    }
+
+    return Array.from(new Set([pkg.image, ...matchedImages])).slice(0, 5);
+  };
+
+  const gallery = getRelevantImages();
 
   const allSimilar = isPilgrimage ? pilgrimagePackages : isDomestic ? domesticPackages : internationalPackages;
   const similarPkgs = allSimilar.filter((p) => p.id !== pkg.id).slice(0, 4);
