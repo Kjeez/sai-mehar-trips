@@ -30,7 +30,7 @@ app.post('/api/request-callback', async (req, res) => {
   try {
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Send email to yourself
+      to: [process.env.EMAIL_USER, 'yourtrickster.kg@gmail.com'], // Send to primary email and testing email
       subject: `New Form Submission from ${name}`,
       text: textContent,
     };
