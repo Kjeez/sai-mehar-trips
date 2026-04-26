@@ -1,6 +1,7 @@
 import FadeIn from './FadeIn';
 import { motion } from 'framer-motion';
 import { FiGlobe, FiFileText, FiSend, FiMapPin } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import { visaCountries, visaCategories, passportServices, airfareServices } from '../data/packagesData';
 import './ServicesSection.css';
 
@@ -38,7 +39,7 @@ const ServicesSection = () => {
               ))}
               <span className="services__tag services__tag--more">+{visaCountries.length - 12} more</span>
             </div>
-            <button className="services__card-btn">Enquire Now →</button>
+            <Link to="/visa" className="services__card-btn">Enquire Now →</Link>
           </FadeIn>
 
           {/* PASSPORT */}
@@ -61,7 +62,7 @@ const ServicesSection = () => {
               ))}
             </div>
             <p className="services__note">{passportServices.note}</p>
-            <button className="services__card-btn">Get Started →</button>
+            <Link to="/visa#passport" className="services__card-btn">Get Started →</Link>
           </FadeIn>
 
           {/* AIRFARE */}
@@ -84,7 +85,7 @@ const ServicesSection = () => {
                 </li>
               ))}
             </ul>
-            <button className="services__card-btn">Book Now →</button>
+            <Link to="/visa#airfare" className="services__card-btn">Book Now →</Link>
           </FadeIn>
         </div>
       </div>

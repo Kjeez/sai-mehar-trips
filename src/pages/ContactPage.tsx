@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiPhone, FiMapPin, FiSend, FiChevronDown } from 'react-icons/fi';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import './ContactPage.css';
 
 const faqs = [
@@ -17,6 +17,30 @@ import PageTransition from '../components/PageTransition';
 
 const ContactPage = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Form State
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+  const [formStatus, setFormStatus] = useState('');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setFormStatus('Sending...');
+    try {
+      const res = await fetch('http://localhost:5000/api/request-callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setFormStatus('Message sent!');
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+      } else {
+        setFormStatus('Error sending message.');
+      }
+    } catch (err) {
+      setFormStatus('Server error.');
+    }
+  };
 
   return (
     <PageTransition>
@@ -62,31 +86,33 @@ const ContactPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
               >
                 <div className="contact-page__form-row">
                   <div className="contact-page__field">
                     <label>First Name</label>
-                    <input type="text" placeholder="Enter Your Name" />
+                    <input type="text" placeholder="Enter Your Name" required value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} />
                   </div>
                   <div className="contact-page__field">
                     <label>Last Name</label>
-                    <input type="text" placeholder="Enter Your Last Name" />
+                    <input type="text" placeholder="Enter Your Last Name" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} />
                   </div>
                 </div>
                 <div className="contact-page__field">
                   <label>Email</label>
-                  <input type="email" placeholder="Email" />
+                  <input type="email" placeholder="Email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
                 </div>
                 <div className="contact-page__field">
                   <label>Phone Number</label>
-                  <input type="tel" placeholder="+91" />
+                  <input type="tel" placeholder="+91" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} />
                 </div>
                 <div className="contact-page__field">
                   <label>Leave Us a Message</label>
-                  <textarea rows={4} placeholder="Your message..." />
+                  <textarea rows={4} placeholder="Your message..." required value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} />
                 </div>
-                <button type="submit" className="contact-page__submit">Submit</button>
+                <button type="submit" className="contact-page__submit">
+                  {formStatus ? formStatus : 'Submit'}
+                </button>
               </motion.form>
             </div>
           </div>

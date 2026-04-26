@@ -33,14 +33,20 @@ function LocationProvider() {
   );
 }
 
+import { CallbackModalProvider } from './contexts/CallbackModalContext';
+import CallbackModal from './components/CallbackModal';
+
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <LocationProvider />
-      <Footer />
-    </Router>
+    <CallbackModalProvider>
+      <Router>
+        <ScrollToTop />
+        <Navbar />
+        <LocationProvider />
+        <Footer />
+        <CallbackModal />
+      </Router>
+    </CallbackModalProvider>
   );
 }
 

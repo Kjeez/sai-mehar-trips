@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { FiSearch, FiPhone, FiMail, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { FiFacebook, FiInstagram, FiLinkedin, FiYoutube } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
-import { menuCategories } from '../data/packagesData';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { menuCategories, internationalPackages, domesticPackages } from '../data/packagesData';
 import './Navbar.css';
 
 const destinations = [
@@ -21,7 +21,10 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
   const isSolidPage = location.pathname.startsWith('/package/');
 
   useEffect(() => {
@@ -43,6 +46,16 @@ const Navbar = () => {
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
   };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const searchResults = searchQuery.trim() === '' ? [] : [
+    ...destinations.filter(d => d.name.toLowerCase().includes(searchQuery.toLowerCase())).map(d => ({ type: 'Destination', name: d.name, link: `/destination/${d.name.toLowerCase().replace(/ /g, '-')}` })),
+    ...internationalPackages.filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase())).map(p => ({ type: 'Package', name: p.title, link: `/package/${p.id}` })),
+    ...domesticPackages.filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase())).map(p => ({ type: 'Package', name: p.title, link: `/package/${p.id}` }))
+  ].slice(0, 6);
 
   return (
     <>
@@ -66,10 +79,56 @@ const Navbar = () => {
           </div>
 
           <div className="navbar__right">
+            
+            <div className="navbar__search-wrapper">
+              <button className="navbar__icon-btn" aria-label="Search" onClick={() => setIsSearchOpen(!isSearchOpen)}>
+                {isSearchOpen ? <FiSearch size={20} color="#e74c3c" /> : <FiSearch size={20} />}
+              </button>
+              
+              <AnimatePresence>
+                {isSearchOpen && (
+                  <motion.div 
+                    className="navbar__search-dropdown"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                  >
+                    <input 
+                      type="text" 
+                      placeholder="Search destinations, packages..." 
+                      value={searchQuery}
+                      onChange={handleSearch}
+                      autoFocus
+                      className="navbar__search-input"
+                    />
+                    {searchQuery && searchResults.length > 0 && (
+                      <div className="navbar__search-results">
+                        {searchResults.map((result, idx) => (
+                          <div 
+                            key={idx} 
+                            className="navbar__search-result-item"
+                            onClick={() => {
+                              navigate(result.link);
+                              setIsSearchOpen(false);
+                              setSearchQuery('');
+                            }}
+                          >
+                            <span className="search-type">{result.type}</span>
+                            <span className="search-name">{result.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {searchQuery && searchResults.length === 0 && (
+                      <div className="navbar__search-results no-results">
+                        No results found
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-            <button className="navbar__icon-btn" aria-label="Search">
-              <FiSearch size={20} />
-            </button>
             <span className="navbar__divider">|</span>
             <a href="tel:+919876543210" className="navbar__icon-btn navbar__phone-btn-mobile">
               <FiPhone size={20} />

@@ -1,0 +1,5 @@
+sai mehar trips
+
+- deploy on their vercel
+- create google app password
+- coonect domain with vercel 

@@ -9,8 +9,10 @@ import CTABanner from '../components/CTABanner';
 import './DestinationPage.css';
 
 import PageTransition from '../components/PageTransition';
+import { useCallbackModal } from '../contexts/CallbackModalContext';
 
 const DestinationPage = () => {
+  const { openModal } = useCallbackModal();
   const { slug } = useParams<{ slug: string }>();
   const [showFullDesc, setShowFullDesc] = useState(false);
 
@@ -178,9 +180,9 @@ const DestinationPage = () => {
                 <FiMapPin size={48} />
                 <h3>Coming Soon!</h3>
                 <p>We're preparing amazing packages for {destination.name}. Contact us for custom quotes.</p>
-                <a href="tel:+919876543210" className="destpage__contact-btn">
+                <button onClick={() => openModal(destination.name)} className="destpage__contact-btn" style={{cursor: 'pointer', border: 'none'}}>
                   <FiPhone size={16} /> Request Callback
-                </a>
+                </button>
               </div>
             )}
           </div>

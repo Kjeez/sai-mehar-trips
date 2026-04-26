@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useDragScroll } from '../hooks/useDragScroll';
 import './TopDestinations.css';
 
@@ -109,18 +110,37 @@ const TopDestinations = () => {
     setActiveDot(dotIndex);
   };
 
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const amount = 320;
+    scrollRef.current.scrollBy({
+      left: direction === 'left' ? -amount : amount,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <section className="destinations" id="destinations">
       <div className="destinations__container">
-        <motion.h2
-          className="destinations__title"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Top Destinations
-        </motion.h2>
+        <div className="destinations__header">
+          <motion.h2
+            className="destinations__title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Top Destinations
+          </motion.h2>
+          <div className="destinations__nav-arrows">
+            <button className="destinations__arrow" onClick={() => scroll('left')} aria-label="Scroll left">
+              <FiChevronLeft size={20} />
+            </button>
+            <button className="destinations__arrow" onClick={() => scroll('right')} aria-label="Scroll right">
+              <FiChevronRight size={20} />
+            </button>
+          </div>
+        </div>
 
         <div className="destinations__scroll-wrapper" ref={scrollRef}>
           <div className="destinations__grid">

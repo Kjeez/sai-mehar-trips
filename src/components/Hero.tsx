@@ -99,12 +99,15 @@ const Hero = () => {
             className="hero__cta"
             whileHover={{ scale: 1.05, boxShadow: '0 8px 30px rgba(231, 76, 60, 0.4)' }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              const el = document.querySelector('.pkg-section');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
             Sai Mehar Specials <FiArrowRight style={{ marginLeft: 8 }} />
           </motion.button>
         </motion.div>
       </div>
-
 
     </section>
   );

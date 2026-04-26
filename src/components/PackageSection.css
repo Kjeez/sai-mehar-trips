@@ -108,8 +108,9 @@
     font-size: 1.4rem;
   }
 
-  .pkg-section__nav-arrows {
-    display: none;
+  .pkg-section__arrow {
+    width: 32px;
+    height: 32px;
   }
 
   .pkg-section__grid {

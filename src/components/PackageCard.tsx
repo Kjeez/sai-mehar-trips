@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiCalendar, FiGlobe } from 'react-icons/fi';
+import { useCallbackModal } from '../contexts/CallbackModalContext';
 import './PackageCard.css';
 
 interface PackageCardProps {
@@ -13,6 +14,8 @@ interface PackageCardProps {
 }
 
 const PackageCard = ({ image, title, duration, price, priceNote, included, imageFit = 'cover' }: PackageCardProps) => {
+  const { openModal } = useCallbackModal();
+
   return (
     <motion.div
       className="pkg-card"
@@ -54,7 +57,16 @@ const PackageCard = ({ image, title, duration, price, priceNote, included, image
         <span className="pkg-card__price-text">
           {price || 'Price on Demand'}
         </span>
-        <button className="pkg-card__btn">Request Callback</button>
+        <button 
+          className="pkg-card__btn" 
+          onClick={(e) => { 
+            e.preventDefault(); 
+            e.stopPropagation(); 
+            openModal(title); 
+          }}
+        >
+          Request Callback
+        </button>
       </div>
     </motion.div>
   );

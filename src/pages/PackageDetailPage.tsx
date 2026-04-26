@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -11,14 +11,40 @@ import WhyUs from '../components/WhyUs';
 import './PackageDetailPage.css';
 
 import PageTransition from '../components/PageTransition';
+import { useCallbackModal } from '../contexts/CallbackModalContext';
 
 const PackageDetailPage = () => {
+  const { openModal } = useCallbackModal();
   const { id } = useParams<{ id: string }>();
   const pkg = internationalPackages.find((p) => p.id === id) || pilgrimagePackages.find((p) => p.id === id) || domesticPackages.find((p) => p.id === id);
   const isPilgrimage = pilgrimagePackages.some((p) => p.id === id);
   const isDomestic = domesticPackages.some((p) => p.id === id);
   const [currentImg, setCurrentImg] = useState(0);
   const [openDay, setOpenDay] = useState<number | null>(0);
+
+  // Quote Form State
+  const [quoteData, setQuoteData] = useState({ name: '', phone: '', email: '', package: '' });
+  const [quoteStatus, setQuoteStatus] = useState('');
+
+  const handleQuoteSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setQuoteStatus('Sending...');
+    try {
+      const res = await fetch('http://localhost:5000/api/request-callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...quoteData, package: pkg?.title || '' }),
+      });
+      if (res.ok) {
+        setQuoteStatus('Quote requested!');
+        setQuoteData({ name: '', phone: '', email: '', package: '' });
+      } else {
+        setQuoteStatus('Error sending request.');
+      }
+    } catch (err) {
+      setQuoteStatus('Server error.');
+    }
+  };
 
   if (!pkg) {
     return (
@@ -183,9 +209,9 @@ const PackageDetailPage = () => {
               )}
 
               <div className="pkgdetail__sidebar-actions">
-                <a href="tel:+919876543210" className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--primary">
+                <button onClick={() => openModal(pkg.title)} className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--primary" style={{cursor: 'pointer', border: 'none', width: '100%'}}>
                   <FiPhone size={16} /> Request Callback
-                </a>
+                </button>
                 <a href="https://wa.me/919876543210" className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--secondary">
                   WhatsApp Us
                 </a>
@@ -205,11 +231,13 @@ const PackageDetailPage = () => {
 
             <div className="pkgdetail__sidebar-card pkgdetail__sidebar-card--quote">
               <h4>Get Your Dream Trip Quote</h4>
-              <form className="pkgdetail__quote-form" onSubmit={(e) => e.preventDefault()}>
-                <input type="text" placeholder="Your Name" />
-                <input type="tel" placeholder="Phone Number" />
-                <input type="email" placeholder="Email" />
-                <button type="submit" className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--primary">Get Quote</button>
+              <form className="pkgdetail__quote-form" onSubmit={handleQuoteSubmit}>
+                <input type="text" placeholder="Your Name" required value={quoteData.name} onChange={(e) => setQuoteData({...quoteData, name: e.target.value})} />
+                <input type="tel" placeholder="Phone Number" required value={quoteData.phone} onChange={(e) => setQuoteData({...quoteData, phone: e.target.value})} />
+                <input type="email" placeholder="Email" required value={quoteData.email} onChange={(e) => setQuoteData({...quoteData, email: e.target.value})} />
+                <button type="submit" className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--primary">
+                  {quoteStatus ? quoteStatus : 'Get Quote'}
+                </button>
               </form>
             </div>
           </aside>

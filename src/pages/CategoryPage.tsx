@@ -8,7 +8,8 @@ import './CategoryPage.css';
 
 const CategoryPage = () => {
   const { slug } = useParams();
-  const [formStatus, setFormStatus] = useState<'' | 'submitted'>('');
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [formStatus, setFormStatus] = useState('');
   
   // Format slug back to display title
   const title = slug 
@@ -17,15 +18,25 @@ const CategoryPage = () => {
     
   const packages = getCategoryPackages(slug || '');
 
-  // Placeholder form handler
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus('submitted');
-    setTimeout(() => {
-      setFormStatus('');
-      // Need to reset the form via event target since it's uncontrolled
-      (e.target as HTMLFormElement).reset();
-    }, 3000);
+    setFormStatus('Sending...');
+    try {
+      const res = await fetch('http://localhost:5000/api/request-callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setFormStatus('submitted');
+        setFormData({ name: '', email: '', phone: '' });
+        setTimeout(() => setFormStatus(''), 3000);
+      } else {
+        setFormStatus('Error sending message.');
+      }
+    } catch (err) {
+      setFormStatus('Server error.');
+    }
   };
 
   useEffect(() => {
@@ -66,20 +77,22 @@ const CategoryPage = () => {
               <form className="category__form" onSubmit={handleSubmit}>
                 <div className="category__form-group">
                   <label>Full Name</label>
-                  <input type="text" placeholder="Enter Your Name" required />
+                  <input type="text" placeholder="Enter Your Name" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} />
                   <FiUser />
                 </div>
                 <div className="category__form-group">
                   <label>Gmail id</label>
-                  <input type="email" placeholder="Enter Your Email Id" required />
+                  <input type="email" placeholder="Enter Your Email Id" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
                   <FiMail />
                 </div>
                 <div className="category__form-group">
                   <label>Phone Number</label>
-                  <input type="tel" placeholder="Enter Your Phone Number" required />
+                  <input type="tel" placeholder="Enter Your Phone Number" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} />
                   <FiPhone />
                 </div>
-                <button type="submit" className="category__form-submit">Submit</button>
+                <button type="submit" className="category__form-submit">
+                  {formStatus === 'Sending...' ? 'Sending...' : 'Submit'}
+                </button>
                 {formStatus === 'submitted' && (
                   <p className="category__success-msg">Thank you! We will contact you soon.</p>
                 )}
