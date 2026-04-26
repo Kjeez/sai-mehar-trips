@@ -40,7 +40,7 @@ const CallbackModal = () => {
     setErrorMsg('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/request-callback', {
+      const res = await fetch('/api/request-callback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
