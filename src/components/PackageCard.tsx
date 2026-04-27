@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiCalendar, FiGlobe } from 'react-icons/fi';
+import { useLocation } from 'react-router-dom';
 import { useCallbackModal } from '../contexts/CallbackModalContext';
 import './PackageCard.css';
 
@@ -15,6 +16,8 @@ interface PackageCardProps {
 
 const PackageCard = ({ image, title, duration, price, priceNote, included, imageFit = 'cover' }: PackageCardProps) => {
   const { openModal } = useCallbackModal();
+  const location = useLocation();
+  const isPackagePage = location.pathname.startsWith('/package/');
 
   return (
     <motion.div
@@ -53,12 +56,15 @@ const PackageCard = ({ image, title, duration, price, priceNote, included, image
         )}
       </div>
 
-      <div className="pkg-card__footer">
-        <span className="pkg-card__price-text">
-          {price || 'Price on Demand'}
-        </span>
+      <div className="pkg-card__footer" style={{ justifyContent: isPackagePage ? 'space-between' : 'center' }}>
+        {isPackagePage && (
+          <span className="pkg-card__price-text">
+            {price || 'Price on Demand'}
+          </span>
+        )}
         <button 
           className="pkg-card__btn" 
+          style={{ width: isPackagePage ? 'auto' : '100%' }}
           onClick={(e) => { 
             e.preventDefault(); 
             e.stopPropagation(); 

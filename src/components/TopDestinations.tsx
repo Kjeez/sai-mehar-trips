@@ -17,7 +17,7 @@ const destinations: Destination[] = [
   { name: 'Singapore', slug: 'singapore', image: '/images/places/singapore.jpg' },
   { name: 'Japan', slug: 'japan', image: '/images/dest_japan_1774589186858.png' },
   { name: 'Sri Lanka', slug: 'srilanka', image: '/images/dest_srilanka_1774589206836.png' },
-  { name: 'Thailand', slug: 'thailand', image: '/images/places/thailand.jpg', price: '₹2,10,000/-' },
+  { name: 'Thailand', slug: 'thailand', image: '/images/places/thailand.jpg' },
   { name: 'Dubai', slug: 'dubai', image: '/images/dest_dubai_1774589249274.png' },
   { name: 'USA', slug: 'usa', image: '/images/dest_usa_1774589265816.png' },
   { name: 'Vietnam', slug: 'vietnam', image: '/images/dest_vietnam_1774589284358.png' },
