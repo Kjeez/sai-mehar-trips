@@ -301,7 +301,7 @@ export const domesticPackages: DomesticPackage[] = [
     duration: '5N/6D',
     price: '₹34,999/-',
     priceNote: 'Per Person with Flight',
-    image: '/images/pkg_sikkim.png',
+    image: '/images/places/sikkim.png',
     included: ['Accommodation', 'Flight', 'Sightseeing as per itinerary'],
     itinerary: [
       { day: 'Day 1: Ixb/Njp - Gangtok', description: 'After arrival meet & greet at ixb & transfer to Gangtok. On arrival check-in to the hotel. Evening free at leisure / you can visit m.g marg / shopping on your own. Overnight stay at Gangtok.' },
@@ -399,7 +399,7 @@ export const domesticPackages: DomesticPackage[] = [
     duration: '4N/5D',
     price: '₹29,999/-',
     priceNote: 'Per Person with Flight',
-    image: '/images/pkg_udaipur.png',
+    image: '/images/places/udaipur.png',
     included: ['Accommodation', 'Flight', 'Sightseeing as per itinerary'],
     itinerary: [
       { day: 'Day 1: Arrival & Lake Charm', description: 'Arrive at Udaipur, check-in. Visit City Palace and Jagdish Temple. Evening sunset boat ride on Lake Pichola and cultural show at Bagore Ki Haveli.' },
