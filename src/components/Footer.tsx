@@ -18,11 +18,11 @@ const Footer = () => {
               As many itineraries and options as you like and as many destinations as you like.
             </p>
             <div className="footer__contact-list">
-              <a href="tel:+919876543210" className="footer__contact-link">
-                <FiPhone size={14} /> +91 9876543210
+              <a href="tel:+917531868691" className="footer__contact-link">
+                <FiPhone size={14} /> +91 7531868691
               </a>
-              <a href="mailto:bookings@saimahartrips.in" className="footer__contact-link">
-                <FiMail size={14} /> bookings@saimahartrips.in
+              <a href="mailto:travel@saimehartrips.com" className="footer__contact-link">
+                <FiMail size={14} /> travel@saimehartrips.com
               </a>
               <span className="footer__contact-link">
                 <FiMapPin size={14} /> India

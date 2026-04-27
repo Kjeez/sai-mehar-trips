@@ -67,13 +67,13 @@ const Navbar = () => {
               <span className="navbar__logo-text">Sai Mehar Trips Pvt Ltd</span>
             </Link>
             <div className="navbar__contact-info">
-              <a href="tel:+919876543210" className="navbar__contact-item">
+              <a href="tel:+917531868691" className="navbar__contact-item">
                 <FiPhone size={14} />
-                <span>(+91) 9876543210</span>
+                <span>(+91) 7531868691</span>
               </a>
-              <a href="mailto:bookings@saimahartrips.in" className="navbar__contact-item">
+              <a href="mailto:travel@saimehartrips.com" className="navbar__contact-item">
                 <FiMail size={14} />
-                <span>bookings@saimahartrips.in</span>
+                <span>travel@saimehartrips.com</span>
               </a>
             </div>
           </div>
@@ -130,7 +130,7 @@ const Navbar = () => {
             </div>
 
             <span className="navbar__divider">|</span>
-            <a href="tel:+919876543210" className="navbar__icon-btn navbar__phone-btn-mobile">
+            <a href="tel:+917531868691" className="navbar__icon-btn navbar__phone-btn-mobile">
               <FiPhone size={20} />
             </a>
             <button

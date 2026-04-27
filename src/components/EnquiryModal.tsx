@@ -21,7 +21,7 @@ const serviceOptions = [
   'Passport Services',
 ];
 
-const WHATSAPP_NUMBER = '919876543210';
+const WHATSAPP_NUMBER = '917531868691';
 
 const EnquiryModal = ({ isOpen, onClose, prefilledCountry = '', prefilledService = '' }: EnquiryModalProps) => {
   const [step, setStep] = useState(1);

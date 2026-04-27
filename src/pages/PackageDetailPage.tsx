@@ -275,7 +275,7 @@ const PackageDetailPage = () => {
                 <button onClick={() => openModal(pkg.title)} className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--primary" style={{cursor: 'pointer', border: 'none', width: '100%'}}>
                   <FiPhone size={16} /> Request Callback
                 </button>
-                <a href="https://wa.me/919876543210" className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--secondary">
+                <a href="https://wa.me/917531868691" className="pkgdetail__sidebar-btn pkgdetail__sidebar-btn--secondary">
                   WhatsApp Us
                 </a>
               </div>

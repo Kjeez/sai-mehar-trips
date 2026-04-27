@@ -16,7 +16,7 @@ const CTABanner = () => {
           <p className="cta-banner__subtitle">We're just a call away!</p>
           <div className="cta-banner__buttons">
             <motion.a
-              href="tel:+919876543210"
+              href="tel:+917531868691"
               className="cta-banner__btn cta-banner__btn--primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -24,7 +24,7 @@ const CTABanner = () => {
               Contact Us <FiArrowRight />
             </motion.a>
             <motion.a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/917531868691"
               className="cta-banner__btn cta-banner__btn--secondary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

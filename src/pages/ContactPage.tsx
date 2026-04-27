@@ -10,7 +10,7 @@ const faqs = [
   { q: 'Do you provide customized travel packages?', a: 'Absolutely! We specialize in customized itineraries tailored to your preferences, budget, and travel dates. Just tell us your dream destination.' },
   { q: 'Do you offer international holiday packages?', a: 'Yes, we offer packages to Singapore, Bali, Thailand, Maldives, Sri Lanka, Dubai, New Zealand, Europe, and many more destinations.' },
   { q: 'Can I book luxury holidays with Sai Mehar Trips Pvt Ltd?', a: 'Yes, we offer premium and luxury packages including 5-star stays, private tours, cruise holidays, and exclusive experiences.' },
-  { q: 'How can I book a trip?', a: 'You can contact us via phone at +91 9876543210, email us at bookings@saimahartrips.in, or fill out the contact form on this page.' },
+  { q: 'How can I book a trip?', a: 'You can contact us via phone at +91 7531868691, email us at travel@saimehartrips.com, or fill out the contact form on this page.' },
   { q: 'Do you provide support during the trip?', a: 'Yes, we offer 24/7 support during your trip. Our team is always available to assist you with any queries or changes needed.' },
 ];
 
@@ -124,23 +124,23 @@ const ContactPage = () => {
           <div className="contact-page__container">
             <div className="contact-page__cards">
               <motion.a
-                href="mailto:bookings@saimahartrips.in"
+                href="mailto:travel@saimehartrips.com"
                 className="contact-page__card contact-page__card--email"
                 whileHover={{ y: -4 }}
               >
                 <div>
                   <span className="contact-page__card-label">You can email us here</span>
-                  <span className="contact-page__card-value">bookings@saimahartrips.in</span>
+                  <span className="contact-page__card-value">travel@saimehartrips.com</span>
                 </div>
                 <FiSend size={24} />
               </motion.a>
               <motion.a
-                href="tel:+919876543210"
+                href="tel:+917531868691"
                 className="contact-page__card contact-page__card--phone"
                 whileHover={{ y: -4 }}
               >
                 <span className="contact-page__card-label">Or give us a call</span>
-                <span className="contact-page__card-value">+91 9876543210</span>
+                <span className="contact-page__card-value">+91 7531868691</span>
                 <FiPhone size={24} />
               </motion.a>
             </div>
