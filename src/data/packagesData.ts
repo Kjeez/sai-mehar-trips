@@ -319,7 +319,7 @@ export const domesticPackages: DomesticPackage[] = [
     duration: '4N/5D',
     price: '₹29,999/-',
     priceNote: 'Per Person with Flight',
-    image: '/images/pkg_kerala.png',
+    image: '/images/places/kerala.png',
     included: ['Accommodation', 'Flight', 'Sightseeing as per itinerary'],
     itinerary: [
       { day: 'Day 1: Cochin - Munnar', description: 'Arrival at Cochin and transfer to Munnar. On the way visit Vaplara, Cheeyappara waterfalls and Tea Plantations. Afternoon visit Rajamala (Eravikulam National Park) and Tea Museum. Evening short visit at Munnar town. Overnight stay at Munnar.' },
