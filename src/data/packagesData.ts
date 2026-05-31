@@ -123,6 +123,13 @@ export const destinationsData: DestinationInfo[] = [
     tagline: 'Adventure Awaits',
     description: 'New Zealand is an adventurer\'s dream — from the dramatic fjords of Milford Sound to the geothermal wonders of Rotorua, the rolling green hills of Hobbiton to the adrenaline capital Queenstown. Experience a land of breathtaking natural beauty, Maori culture, and endless outdoor adventures.',
   },
+  {
+    slug: 'china',
+    name: 'China',
+    heroImage: '/images/places/china_great_wall.png',
+    tagline: 'The Middle Kingdom',
+    description: 'Discover the ancient wonders and modern marvels of China. From the awe-inspiring Great Wall and Forbidden City to the bustling, futuristic streets of Shanghai.',
+  },
 ];
 
 // ─────────────────────────────────────────────
@@ -271,6 +278,19 @@ export const internationalPackages: Package[] = [
     image: '/images/pkg_newzealand.png',
     included: ['Auckland', 'Waitomo', 'Hobbiton', 'Rotorua', 'Napier', 'Wellington'],
     note: 'Contact us for your preferred itinerary and share your details for many more trips.',
+  },
+  {
+    id: 'china',
+    destination: 'china',
+    title: 'CHINA VISA & PACKAGE',
+    duration: 'Custom',
+    price: 'Special Price',
+    image: '/images/chinapackage.jpeg',
+    included: ['Visa Assistance', 'Expert Guidance', 'Doorstep Service'],
+    itinerary: [
+      { day: 'Day 1', description: 'Contact us to customize your perfect China trip.' }
+    ],
+    note: 'Apply China Visa at Your Doorstep. We offer specialized business and tourist visas.',
   },
 ];
 

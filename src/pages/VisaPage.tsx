@@ -192,6 +192,23 @@ const VisaPage = () => {
           </div>
         </section>
 
+        {/* Promo Banner */}
+        <section className="visapage__promo-banner">
+          <div className="visapage__container" style={{ textAlign: 'center' }}>
+            <motion.img
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              src="/images/chinapackage.jpeg"
+              alt="China Visa Special Price"
+              className="visapage__promo-banner-img"
+              onClick={() => openModal('China')}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
+        </section>
+
         {/* Countries Grid */}
         <section className="visapage__countries">
           <div className="visapage__container">

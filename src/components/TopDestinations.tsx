@@ -21,6 +21,7 @@ const destinations: Destination[] = [
   { name: 'Dubai', slug: 'dubai', image: '/images/dest_dubai_1774589249274.png' },
   { name: 'USA', slug: 'usa', image: '/images/dest_usa_1774589265816.png' },
   { name: 'Vietnam', slug: 'vietnam', image: '/images/dest_vietnam_1774589284358.png' },
+  { name: 'China', slug: 'china', image: '/images/places/china_great_wall.png' },
 ];
 
 const TopDestinations = () => {

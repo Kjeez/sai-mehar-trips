@@ -1,5 +1,6 @@
 import Hero from '../components/Hero';
 import TopDestinations from '../components/TopDestinations';
+import VideoPodcast from '../components/VideoPodcast';
 import PackageSection from '../components/PackageSection';
 import PackageCard from '../components/PackageCard';
 import ServicesSection from '../components/ServicesSection';
@@ -80,6 +81,7 @@ const HomePage = () => {
 
       <ServicesSection />
       <WhyUs />
+      <VideoPodcast />
       <CTABanner />
     </PageTransition>
   );

@@ -15,6 +15,7 @@ const destinations = [
   { name: 'Dubai', image: '/images/dest_dubai_1774589249274.png' },
   { name: 'USA', image: '/images/dest_usa_1774589265816.png' },
   { name: 'Vietnam', image: '/images/dest_vietnam_1774589284358.png' },
+  { name: 'China', image: '/images/places/china_great_wall.png' },
 ];
 
 const Navbar = () => {

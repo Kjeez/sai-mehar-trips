@@ -94,6 +94,8 @@ const PackageDetailPage = () => {
       { keywords: ['jaisalmer'], img: '/images/pkg_jaisalmer.png' },
       { keywords: ['manali'], img: '/images/places/manali.jpg' },
       { keywords: ['manali'], img: '/images/pkg_manali.png' },
+      { keywords: ['china', 'beijing', 'shanghai'], img: '/images/places/china_great_wall.png' },
+      { keywords: ['china', 'shanghai', 'beijing'], img: '/images/places/china_shanghai.png' },
 
       { keywords: ['baidyanath', 'deoghar'], img: '/images/places/pkg_baidyanath.png' },
       { keywords: ['somnath', 'dwarka'], img: '/images/places/pkg_somnath.png' },

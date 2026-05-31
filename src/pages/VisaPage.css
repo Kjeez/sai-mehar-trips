@@ -308,6 +308,28 @@
 }
 
 /* ─────────────────────────────────────────────
+   PROMO BANNER
+   ───────────────────────────────────────────── */
+.visapage__promo-banner {
+  padding: 40px 20px;
+  background: var(--bg-white);
+  display: flex;
+  justify-content: center;
+}
+
+.visapage__promo-banner-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.visapage__promo-banner-img:hover {
+  transform: scale(1.02);
+}
+
+/* ─────────────────────────────────────────────
    COUNTRIES SECTION
    ───────────────────────────────────────────── */
 .visapage__countries {
